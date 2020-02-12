@@ -26,22 +26,19 @@ padding: 60px;
 
 display: flex;
 align-self: center;
-
-
 }
 
 #InputDetails input[type=text], input[type=password]{
   border: 2px solid #FEE12B;
   border-radius: 4px;
 }
+
 #InputDetails input[type=submit] {
   border: 2px solid #FEE12B;
     padding: 8px 16px;
-
-
 }
-body{
 
+body{
   display: flex;
   justify-content: center;
   align-items: center;
