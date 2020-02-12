@@ -1,0 +1,21 @@
+#TitleBar{
+height: 60px;
+background-color: #FEE12B;
+display: flex;
+justify-content: center;
+align-items: center;
+
+width: 90%;
+}
+#TitleBar h1{
+font-size:50px;
+padding-left: 10px;
+color: gray;
+
+}
+body{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
