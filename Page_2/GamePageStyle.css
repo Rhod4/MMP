@@ -1,6 +1,6 @@
 #TitleBar{
 height: 60px;
-background-color: #FEE12B;
+background-color: #ECECEC;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -23,7 +23,7 @@ justify-content: flex-start;
 #Java{
   width: 80%;
   height: 200px;
-  background-color: #FEE12B;
+  background-color: #ECECEC;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,9 +32,9 @@ justify-content: flex-start;
 height: 100px;
 width: 100%;
 
-background-color: #FEE12B;
+background-color: #ECECEC;
 position: fixed;
  bottom: 0;
-
+font-size: 15px;
 
 }
