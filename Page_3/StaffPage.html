@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<head>
+  <html lang="en">
+<meta charset="UTF-8">
+ <link rel = "stylesheet" href="StaffPageStyle.css">
+<title>Rhs24 MMP</title>
+</head>
+<body>
+
+  <div id = "TitleBar">
+  <h1 id="TitleText"> Staff Page</h1>
+  </div>
+
+  <div id = "Table">
+  <h1 id="TitleText"> Staff Page</h1>
+
+  <div id = "Students">
+  <h1 id="StudentNames"> Student Names will go here</h1>
+
+  <table>
+  <!-- here goes our data! -->
+  </table>
+<script type="text/javascript">
+
+
+    let studentID = [
+      { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
+      { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
+      { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
+      { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
+      { name: "Monte Amiata", height: 1738, place: "Siena" }
+    ];
+
+    function generateTableHead(table, data) {
+      let thead = table.createTHead();
+      let row = thead.insertRow();
+      for (let student of data) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(student);
+        th.appendChild(text);
+        row.appendChild(th);
+      }
+    }
+
+    function generateTable(table, data) {
+      for (let element of data){
+        let row = table.insertRow();
+        for (student in element) {
+          let cell = row.insertCell();
+          let text = document.createTextNode(element[student]);
+          cell.appendChild(text);
+        }
+      }
+    }
+
+    let table = document.querySelector("table");
+    let data = Object.keys(studentID[0]);
+    generateTableHead(table, data);
+    generateTable(table, studentID);
+
+
+  </script>
+
+  </div>
+
+
+
+
+  </div>
+
+
+
+
+</body>
