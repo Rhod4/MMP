@@ -24,17 +24,18 @@
 
 
     let studentID = [
-      { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
-      { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
-      { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
-      { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
-      { name: "Monte Amiata", height: 1738, place: "Siena" }
+      { name: "James", year: 6 },
+      { name: "Monte Falterona", height: 7},
+      { name: "Poggio Scali", height:6 },
+      { name: "Pratomagno", height: 5 },
+      { name: "Monte Amiata", height: 8}
     ];
 
-    function generateTableHead(table, data) {
+    function AddTableData(table, data) {
       let thead = table.createTHead();
       let row = thead.insertRow();
       for (let student of data) {
+        // the th makes the name and year bold, centered and have a gap
         let th = document.createElement("th");
         let text = document.createTextNode(student);
         th.appendChild(text);
@@ -55,7 +56,7 @@
 
     let table = document.querySelector("table");
     let data = Object.keys(studentID[0]);
-    generateTableHead(table, data);
+    AddTableData(table, data);
     generateTable(table, studentID);
 
 
