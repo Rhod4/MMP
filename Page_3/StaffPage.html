@@ -10,15 +10,15 @@
 </head>
 <body>
 
-  <div id = "TitleBar">
+<div id = "TitleBar">
   <h1 id="TitleText"> Staff Page</h1>
-  </div>
+</div>
 
-  <div id = "Table">
+<div id = "Table">
   <h1 id="TitleText"> Staff Page</h1>
 
   <div id = "Students">
-  <h1 id="StudentNames"> Student Names will go here</h1>
+    <h1 id="StudentNames"> Student Names will go here</h1>
 
   <table id = "sad" class="display">
     <thead>
@@ -37,73 +37,30 @@
  </tbody>
   </table>
 
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">  </script>
-  <script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">  </script>
+
+<script>
   function Student (name, year) {
       this.name = name;
-      this.year = year;
+      this.year = a;
   };
 
 $(document).ready( function () {
     $('#sad').DataTable( {
     data:[
-      new Student( "Tiger Nixon", "2")],
+      new Student( "Tiger Nixon", "4")],
     columns: [
       { data: 'name' },
       { data: 'year' }]
 } );
 }
 );
-  </script>
-
-
-  <!--
-
-//  function AddTableData(table, data) {
-//pushes student data onto the table for users to see
-
-// studentID.push("function","asdsad")
-//
-//       let thead = table.createTHead();
-//       let row = thead.insertRow();
-//       for (let student of data) {
-//         // the th makes the name and year bold, centered and have a gap
-//         let th = document.createElement("th");
-//         let text = document.createTextNode(student);
-//         th.appendChild(text);
-//         row.appendChild(th);
-//       }
-//     }
-//
-//
-//     function generateTable(table, data) {
-//       for (let element of data){
-//         let row = table.insertRow();
-//         for (student in element) {
-//           let cell = row.insertCell();
-//           let text = document.createTextNode(element[student]);
-//           cell.appendChild(text);
-//         }
-//       }
-//     }
-//
-//     let table = document.querySelector("table");
-//     let data = Object.keys(studentID[0]);
-//     AddTableData(table, data);
-//     generateTable(table, studentID); -->
-
-
-
-
+var a = 3;
+</script>
   </div>
 
-
-
-
-  </div>
+</div>
 
 
 
