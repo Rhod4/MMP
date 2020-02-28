@@ -6,8 +6,9 @@ var ctx = c.getContext("2d");
 var a = 10;
 
 let rects = {
-  redSquare: { x: 10, y: 10, w: 10, h: 10, fillStyle: "Red"},
-  blueSquare: { x: 100, y: 10, w: 10, h: 10,fillStyle: "Blue"}
+  redSquare: { x: 10, y: 10, w: 50, h: 50, fillStyle: "Red"},
+  blueSquare: { x: 95, y: 10, w: 50, h: 50,fillStyle: "Blue"},
+    yellowSquare: { x: 190, y: 10, w: 50, h: 50,fillStyle: "Yellow"}
 };
 
 Background();
