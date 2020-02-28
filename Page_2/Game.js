@@ -1,15 +1,16 @@
-
-
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 
-var a = 10;
 
 let rects = {
   redSquare: { x: 10, y: 10, w: 50, h: 50, fillStyle: "Red"},
   blueSquare: { x: 95, y: 10, w: 50, h: 50,fillStyle: "Blue"},
-    yellowSquare: { x: 190, y: 10, w: 50, h: 50,fillStyle: "Yellow"}
+    yellowSquare: { x: 190, y: 10, w: 50, h: 50,fillStyle: "Yellow"},
+    PinkSquare: { x: 10, y: 90, w: 50, h: 50, fillStyle: "pink"},
+    greenSquare: { x: 95, y: 90, w: 50, h: 50,fillStyle: "green"},
+      whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white"}
 };
+
 
 Background();
 DrawRects();
