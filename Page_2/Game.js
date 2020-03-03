@@ -3,14 +3,15 @@ var ctx = c.getContext("2d");
 
 
 let rects = {
-  redSquare: { x: 10, y: 10, w: 50, h: 50, fillStyle: "Red"},
-  blueSquare: { x: 95, y: 10, w: 50, h: 50,fillStyle: "Blue"},
-    yellowSquare: { x: 190, y: 10, w: 50, h: 50,fillStyle: "Yellow"},
-    PinkSquare: { x: 10, y: 90, w: 50, h: 50, fillStyle: "pink"},
-    greenSquare: { x: 95, y: 90, w: 50, h: 50,fillStyle: "green"},
-      whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white"}
+  redSquare: { x: 10, y: 10, w: 50, h: 50, fillStyle: "red", set: 1},
+  blueSquare: { x: 95, y: 10, w: 50, h: 50,fillStyle: "blue",set: 2},
+    yellowSquare: { x: 190, y: 10, w: 50, h: 50,fillStyle: "yellow",set: 3},
+    PinkSquare: { x: 10, y: 90, w: 50, h: 50, fillStyle: "pink",set: 4},
+    greenSquare: { x: 95, y: 90, w: 50, h: 50,fillStyle: "green",set: 5},
+      whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white",set: 6}
 };
-
+var first = 0;
+var second = 0;
 
 Background();
 DrawRects();
@@ -37,10 +38,21 @@ function ReDrawRects(){
   DrawRects();
 }
 
+function RandomQuestion(){
+  first = Math.floor(Math.random() * 11);
+  second = Math.floor(Math.random() * 11);
+}
 
 document.getElementById("demo").onmousedown = function() {
+
+  RandomQuestion();
   rects["redSquare"].x += 10;
   ReDrawRects();
-  document.getElementById("demo").innerHTML = rects.size;
+
+  document.getElementById("demo").innerHTML = first + "+" + second;
 
 }
+rects.addEventListener('mousedown', e => {
+console.log("Click");
+
+});
