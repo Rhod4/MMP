@@ -52,7 +52,8 @@ document.getElementById("demo").onmousedown = function() {
   document.getElementById("demo").innerHTML = first + "+" + second;
 
 }
-rects.addEventListener('mousedown', e => {
-console.log("Click");
+c.addEventListener('mousedown', e => {
+rects.clicked = console.log("hello world");
+
 
 });
