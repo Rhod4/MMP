@@ -11,7 +11,7 @@
   };
   var first = 0;
   var second = 0;
-
+var answer = 0;
 
 DivMaker();
 
@@ -36,8 +36,7 @@ DivMaker();
   document.getElementById("demo").onmousedown = function() {
 
     RandomQuestion();
-    rects["redSquare"].x += 10;
-  //  ReDrawRects();
+    answer = first + second
 
     document.getElementById("demo").innerHTML = first + "+" + second;
   }
