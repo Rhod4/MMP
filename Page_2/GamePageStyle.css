@@ -10,17 +10,15 @@ width: 90%;
 font-size:50px;
 padding-left: 10px;
 color: gray;
-
 }
+
 body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-justify-content: flex-start;
-  flex: 1;
-
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 }
-#Java{
+
+#JavaGame{
   width: 80%;
   height: 200px;
   background-color: #ECECEC;
@@ -28,13 +26,16 @@ justify-content: flex-start;
   justify-content: center;
   align-items: center;
 }
+
+#Game{
+flex-direction:row;
+}
+
 #BottomBar{
 height: 100px;
 width: 100%;
-
 background-color: #ECECEC;
 position: fixed;
  bottom: 0;
 font-size: 15px;
-
 }
