@@ -12,7 +12,7 @@
   var first = 0;
   var second = 0;
 var answer = 0;
-
+var squareQuestion = 0;
 DivMaker();
 
   function Background(){
@@ -31,6 +31,9 @@ DivMaker();
   function RandomQuestion(){
     first = Math.floor(Math.random() * 11);
     second = Math.floor(Math.random() * 11);
+for (var rect in rects) {
+      document.getElementById(rect).innerHTML = Math.floor(Math.random() * 11);
+    };
   }
 
   document.getElementById("demo").onmousedown = function() {
@@ -39,6 +42,8 @@ DivMaker();
     answer = first + second
 
     document.getElementById("demo").innerHTML = first + "+" + second;
+  first = Math.floor(Math.random() * 11);
+
   }
 
 
@@ -75,7 +80,7 @@ DivMaker();
   newDiv.id = rect;
   newDiv.style.left = rects[rect].x+'px';
   newDiv.style.top = rects[rect].y+'px';
-
+newDiv.style.aling = "center";
 
      var newContent = document.createTextNode("Hi there and greetings!");
       newDiv.appendChild(newContent);
