@@ -20,8 +20,6 @@ function RandomQuestion(){
   console.log(answerSquareFinder);
 }
 
-
-
 document.getElementById("demo").onmousedown = function() {
   RandomQuestion();
   answer = first + second
@@ -29,7 +27,6 @@ document.getElementById("demo").onmousedown = function() {
   NumberInSquareChecker();
   SameAnswerChecker();
 }
-
 
 {
   document.getElementById("redSquare").addEventListener("mousedown", function (event) {
@@ -50,7 +47,6 @@ document.getElementById("demo").onmousedown = function() {
   document.getElementById("whiteSquare").addEventListener("mousedown", function (event) {
     AnswerChecker(sqaureName = "whiteSquare");
   });
-
 }
 
 function DivMaker(){
@@ -85,8 +81,6 @@ function SameAnswerChecker(){
   };
 }
 
-
-
 function NumberInSquareChecker(){
   for (var rect in rects) {
     do{
@@ -105,5 +99,4 @@ function AnswerChecker(sqaureName){
   if (rects[sqaureName].set == answerSquareFinder){
     CorrectAnswer();
   }
-
 }
