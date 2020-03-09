@@ -7,8 +7,7 @@ let rects = {
   whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white",set: 5}
 };
 var score = 0;
-var first;
-var second;
+
 var answer;
 var answerSquareFinder;
 DivMaker();
@@ -18,6 +17,7 @@ function RandomQuestion(){
   second = Math.floor(Math.random() * 11);
   answerSquareFinder = Math.floor(Math.random() * 5);
   console.log(answerSquareFinder);
+  return first, second;
 }
 
 document.getElementById("demo").onmousedown = function() {
@@ -28,24 +28,14 @@ document.getElementById("demo").onmousedown = function() {
   SameAnswerChecker();
 }
 
-{
-  document.getElementById("redSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "redSquare");
-  });
-  document.getElementById("blueSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "blueSquare");
-  });
-  document.getElementById("yellowSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "yellowSquare");
-  });
-  document.getElementById("PinkSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "PinkSquare");
-  });
-  document.getElementById("greenSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "greenSquare");
-  });
-  document.getElementById("whiteSquare").addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = "whiteSquare");
+
+/*This function runs as when it was part of the DivMaker function,
+it would only run the last objects name for all the objects*/
+function OnClickLoop(name){
+  console.log(name);
+  document.getElementById(name).addEventListener("mousedown", function (event) {
+  AnswerChecker(sqaureName = name);
+  console.log(name);
   });
 }
 
@@ -69,7 +59,11 @@ function DivMaker(){
     var currentDiv = document.getElementById("JavaGame");
     document.body.insertBefore(newDiv, currentDiv);
     document.getElementById('JavaGame').appendChild(newDiv);
+
+
+OnClickLoop(name = rect);
   };
+
 }
 
 /*function that sets one of the answer divs to be correct*/
