@@ -16,6 +16,7 @@ body{
  display: flex;
  flex-direction: column;
  align-items: center;
+ justify-content: space-between
 }
 
 #JavaGame{
@@ -29,6 +30,25 @@ body{
 
 #Game{
 flex-direction:row;
+}
+
+#Progress{
+  width: 80%;
+height: 50px;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#Question {
+  width: 100px;
+  height: 50px;
+    background-color: white;
+}
+#Score {
+  width: 100px;
+  height: 50px;
+    background-color: white;
 }
 
 #BottomBar{

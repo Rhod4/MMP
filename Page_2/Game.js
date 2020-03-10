@@ -10,34 +10,9 @@ var score = 0;
 
 var answer;
 var answerSquareFinder;
+var question = 0;
+
 DivMaker();
-
-function RandomQuestion(){
-  first = Math.floor(Math.random() * 11);
-  second = Math.floor(Math.random() * 11);
-  answerSquareFinder = Math.floor(Math.random() * 5);
-  console.log(answerSquareFinder);
-  return first, second;
-}
-
-document.getElementById("demo").onmousedown = function() {
-  RandomQuestion();
-  answer = first + second
-  document.getElementById("demo").innerHTML = first + "+" + second;
-  NumberInSquareChecker();
-  SameAnswerChecker();
-}
-
-
-/*This function runs as when it was part of the DivMaker function,
-it would only run the last objects name for all the objects*/
-function OnClickLoop(name){
-  console.log(name);
-  document.getElementById(name).addEventListener("mousedown", function (event) {
-  AnswerChecker(sqaureName = name);
-  console.log(name);
-  });
-}
 
 function DivMaker(){
   //for loop that runs for every object in the rects array
@@ -61,7 +36,8 @@ function DivMaker(){
     document.getElementById('JavaGame').appendChild(newDiv);
 
 
-OnClickLoop(name = rect);
+    OnClickLoop(name = rect);
+
   };
 
 }
@@ -84,13 +60,55 @@ function NumberInSquareChecker(){
   };
 }
 
-function CorrectAnswer(){
-  score ++;
-  console.log(score);
-}
-
 function AnswerChecker(sqaureName){
   if (rects[sqaureName].set == answerSquareFinder){
-    CorrectAnswer();
+    ScoreUpdate();
+      console.log(score);
+       RandomQuestion();
   }
+}
+
+function RandomQuestion(){
+  first = Math.floor(Math.random() * 11);
+  second = Math.floor(Math.random() * 11);
+  answerSquareFinder = Math.floor(Math.random() * 5);
+  console.log(answerSquareFinder);
+
+  answer = first + second
+  document.getElementById("demo").innerHTML = first + "+" + second;
+
+  NumberInSquareChecker();
+  SameAnswerChecker();
+  QuestionUpdate();
+
+  return first, second;
+
+}
+
+document.getElementById("demo").onmousedown = function() {
+  RandomQuestion();
+
+
+}
+
+
+/*This function runs as when it was part of the DivMaker function,
+it would only run the last objects name for all the objects*/
+function OnClickLoop(name){
+  console.log(name);
+  document.getElementById(name).addEventListener("mousedown", function (event) {
+    AnswerChecker(sqaureName = name);
+    console.log(name);
+  });
+}
+
+function ScoreUpdate(){
+score++;
+document.getElementById("Score").innerHTML = score;
+}
+
+function QuestionUpdate(){
+
+question++;
+  document.getElementById("Question").innerHTML = question;
 }
