@@ -20,7 +20,7 @@
   <div id = "Students">
     <h1 id="StudentNames"> Student Names will go here</h1>
 
-  <table id = "sad" class="display">
+  <table id = "StudentDataBase" class="display">
     <thead>
          <tr>
              <th>name</th>
@@ -46,16 +46,35 @@
       this.year = a;
   };
 
+
 $(document).ready( function () {
-    $('#sad').DataTable( {
+
+  var table =  $('#StudentDataBase').DataTable( {
     data:[
-      new Student( "Paul Davies", "4")],
+      new Student( "Paul Davies", "4"),
+      new Student( "Dave Smith", "4")],
     columns: [
       { data: 'name' },
       { data: 'year' }]
+
+
+
+});
+
+$('#StudentDataBase tbody').on( 'click', 'td', function () {
+  var clickedStudent = table.cell(this, 0).data();
+console.log(clickedStudent);
 });
 });
 var a = 3;
+
+
+
+
+
+
+
+
 
 </script>
   </div>
