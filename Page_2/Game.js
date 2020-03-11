@@ -52,12 +52,7 @@ function SameAnswerChecker(){
 }
 
 function NumberInSquareChecker(){
-  for (var rect in rects) {
-    do{
-      document.getElementById(rect).innerHTML = Math.floor(Math.random() * 21);
-    }
-    while (document.getElementById(rect).innerHTML == answer)
-  };
+
 }
 
 function AnswerChecker(sqaureName){
@@ -77,7 +72,14 @@ function RandomQuestion(){
   answer = first + second
   document.getElementById("demo").innerHTML = first + "+" + second;
 
-  NumberInSquareChecker();
+  for (var rect in rects) {
+    do{
+      document.getElementById(rect).innerHTML = Math.floor(Math.random() * 21);
+    }
+    while (document.getElementById(rect).innerHTML == answer)
+  };
+
+
   SameAnswerChecker();
   QuestionUpdate();
 
@@ -87,8 +89,6 @@ function RandomQuestion(){
 
 document.getElementById("demo").onmousedown = function() {
   RandomQuestion();
-
-
 }
 
 
