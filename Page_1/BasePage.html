@@ -16,12 +16,12 @@
 <div id = "InputDetails">
 
 
-<form action="C:/Users/rhodr/Desktop/MMP/Page_2/GamePage.html">
+<form name="newForm"  onsubmit="OnSubmit()">
 <!-- <form action="/Login.php"> -->
 
   <b>UserID:</b>
 <br><br>
-  <input type="text" name="UserId" value="">
+  <input id = "ID" type="text" name="UserId" value="">
   <br><br>
   <b>Password:</b>
 <br><br>
@@ -34,5 +34,17 @@
 
 </div>
 </div>
+
+<script>
+function OnSubmit(){
+var nameValue = document.getElementById("ID").value;
+if (nameValue.endsWith("teacher")){
+   document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_3/StaffPage.html";
+}
+if (nameValue.endsWith("student")){
+   document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_2/GamePage.html";
+}
+}
+</script>
 
 </body>
