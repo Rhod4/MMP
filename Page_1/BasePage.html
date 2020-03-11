@@ -17,7 +17,7 @@
 
 
 <form name="newForm"  onsubmit="OnSubmit()">
-<!-- <form action="/Login.php"> -->
+
 
   <b>UserID:</b>
 <br><br>
@@ -38,11 +38,15 @@
 <script>
 function OnSubmit(){
 var nameValue = document.getElementById("ID").value;
-if (nameValue.endsWith("teacher")){
+if (nameValue.includes("teacher")){
+sessionStorage.setItem("teacher", nameValue);
    document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_3/StaffPage.html";
 }
-if (nameValue.endsWith("student")){
+else if (nameValue.includes("student")){
    document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_2/GamePage.html";
+}
+else if (nameValue == ""){
+  alert("Please Enter Details");
 }
 }
 </script>

@@ -15,16 +15,17 @@
 </div>
 
 <div id = "Table">
-  <h1 id="TitleText"> Staff Page</h1>
+  <h1 id="TableText"></h1>
 
   <div id = "Students">
-    <h1 id="StudentNames"> Student Names will go here</h1>
+    <h1 id="StudentNames"></h1>
 
   <table id = "StudentDataBase" class="display">
     <thead>
          <tr>
              <th>name</th>
              <th>year</th>
+             <th>score</th>
          </tr>
      </thead>
      <tbody>
@@ -41,9 +42,15 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js">  </script>
 
 <script>
-  function Student (name, year) {
+
+var teacher = sessionStorage.getItem("teacher");
+document.getElementById("TableText").innerHTML = teacher;
+
+
+  function Student (name, year, score) {
       this.name = name;
-      this.year = a;
+      this.year = year;
+      this.score = score
   };
 
 
@@ -51,19 +58,24 @@ $(document).ready( function () {
 
   var table =  $('#StudentDataBase').DataTable( {
     data:[
-      new Student( "Paul Davies", "4"),
-      new Student( "Dave Smith", "4")],
+      new Student( "Paul Davies", "4", "0"),
+      new Student( "Dave Smith", "4", "0")],
     columns: [
       { data: 'name' },
-      { data: 'year' }]
-
-
-
+      { data: 'year' },
+      { data: 'score'}]
 });
 
 $('#StudentDataBase tbody').on( 'click', 'td', function () {
   var clickedStudent = table.cell(this, 0).data();
 console.log(clickedStudent);
+var fullStudent = table.row(this).data();
+
+
+sessionStorage.setItem("student", clickedStudent);
+window.location.href = "file:///C:/Users/rhodr/Desktop/MMP/StudentDetails/StudentPage.html";
+
+
 });
 });
 var a = 3;
