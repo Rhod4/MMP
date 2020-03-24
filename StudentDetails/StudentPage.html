@@ -39,8 +39,37 @@
 var student = sessionStorage.getItem("student")
 console.log(student);
 document.getElementById("Break").innerHTML = student;
-
-
+var name;
+<?php echo json_encode($name) = name; ?>
 </script>
+
+
+
+
+
+<?php
+// Include config file
+require_once "db_connection.php";
+
+
+$name = '' ;
+
+// $query = "SELECT * FROM `test";
+
+$sql = "SELECT name, type, date FROM test";
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "name: " . $row["name"]. " - type: " . $row["type"]. " " . $row["date"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+$conn->close();
+
+?>
+
+
 
 </body>
