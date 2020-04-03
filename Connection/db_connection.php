@@ -1,18 +1,29 @@
-<?php
-function OpenCon()
- {
- $dbhost = "db.dcs.aber.ac.uk";
- $dbuser = "rhs24";
- $dbpass = "rhodri18";
- $db = "cs39440_19_20_rhs24";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
- 
- return $conn;
- }
- 
-function CloseCon($conn)
- {
- $conn -> close();
- }
-   
-?>
+
+  <?php
+  // Include config file
+
+  $dbhost = "db.dcs.aber.ac.uk";
+  $dbuser = "rhs24";
+  $dbpass = "****";
+  $db = "cs39440_19_20_rhs24";
+  $conn = new mysqli_connect($dbhost, $dbuser, $dbpass,$db);
+
+if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+  // $query = "SELECT * FROM `test";
+
+  $sql = "SELECT * FROM `test`";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "name: " . $row["name"]. " - type: " . $row["type"]. " " . $row["date"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+  $conn->close();
+
+  ?>
