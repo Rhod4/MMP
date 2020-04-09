@@ -1,6 +1,7 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+  <html>
 <head>
-  <html lang="en">
+
 <meta charset="UTF-8">
  <link rel = "stylesheet" href="BaseStyle.css">
 <title>Rhs24 MMP</title>
@@ -38,17 +39,41 @@
 <script>
 function OnSubmit(){
 var nameValue = document.getElementById("ID").value;
+
+<?php  include 'M:\PhP\db_connection.php'; ?>
+
+
+
 if (nameValue.includes("teacher")){
-sessionStorage.setItem("teacher", nameValue);
-   document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_3/StaffPage.html";
+sessionStorage.setItem("teacher", "teacher");
+   document.newForm.action = "http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.html";
 }
 else if (nameValue.includes("student")){
-   document.newForm.action = "file:///C:/Users/rhodr/Desktop/MMP/Page_2/GamePage.html";
+   document.newForm.action = "http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.html";
+}
+if (nameValue.includes("admin")){
+sessionStorage.setItem("teacher", "admin");
+   document.newForm.action = "http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.html";
 }
 else if (nameValue == ""){
   alert("Please Enter Details");
 }
 }
 </script>
+<?php func1('q','s'); ?>
+
+<?php
+echo "<h2>PHP is Fun!</h2>";
+?>
+
+<?php
+phpinfo();
+?>
+
+<?php
+header("Location: https://google.com");
+exit();
+?>
 
 </body>
+</html>

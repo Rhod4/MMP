@@ -78,34 +78,26 @@
 
 
               var fullStudent = table.row(this).data();
-              if (document.getElementById("rect")){
-                var el = document.getElementById('rect');
-                el.remove()
+              if (document.getElementById("box")){
+                var removeBox = document.getElementById('box');
+                removeBox.remove()
               }
 
-              if (!document.getElementById("rect")){
-                var newDiv = document.createElement("rect");
-                newDiv.style.width = "500px";
-                newDiv.style.height = "100px";
-                newDiv.style.background = "gray";
-                newDiv.style.margin = "10px";
-                newDiv.id = "rect";
-                newDiv.style.left = 100 + 'px';
-                newDiv.style.top = 10 + 'px';
-                newDiv.style.aling = "center";
 
-                var newContent = document.createTextNode("");
-                newDiv.appendChild(newContent);
+
+teacher = "teacher";
 
 
 
-                var currentDiv = document.getElementById("JavaGame");
-                document.body.insertBefore(newDiv, currentDiv);
-                document.body.appendChild(newDiv);
 
+              if (!document.getElementById("box")){
+                if (teacher == "admin"){
+
+                button();
+
+                }
 
               }
-              document.getElementById("rect").innerHTML = clickedStudent + "<br/>" + clickedStudentScore;
 
 
 
@@ -118,6 +110,54 @@
 
 
 
+
+function button(){
+
+
+if (!document.getElementById("button")){
+  var newDiv = document.createElement("box");
+  newDiv.style.width = "500px";
+  newDiv.style.height = "100px";
+  newDiv.style.background = "gray";
+  newDiv.style.margin = "10px";
+  newDiv.id = "box";
+  newDiv.style.left = 100 + 'px';
+  newDiv.style.top = 10 + 'px';
+  newDiv.style.aling = "center";
+
+
+
+  var newContent = document.createTextNode("");
+  newDiv.appendChild(newContent);
+  var currentDiv = document.getElementById("JavaGame");
+  document.body.insertBefore(newDiv, currentDiv);
+  document.body.appendChild(newDiv);
+
+
+var i;
+for (i = 0; i <=2; i++){
+  var newDiv = document.createElement("button");
+  newDiv.style.width = "20px";
+  newDiv.style.height = "20px";
+  newDiv.style.background = "blue";
+  newDiv.style.margin = "10px";
+  newDiv.id = "button";
+  newDiv.style.left = 100 + 'px';
+  newDiv.style.top = 10 + 'px';
+  newDiv.style.aling = "center";
+newDiv.style.float = "right";
+
+  var newContent = document.createTextNode("");
+  newDiv.appendChild(newContent);
+
+  var currentDiv = document.getElementById("rect");
+  document.body.insertBefore(newDiv, currentDiv);
+    document.getElementById('box').appendChild(newDiv);
+
+}}
+
+
+}
           </script>
 
 

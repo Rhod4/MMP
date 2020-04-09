@@ -13,6 +13,10 @@ if (!$conn) {
   }
   // $query = "SELECT * FROM `test";
 
+function test(){
+
+global $conn;
+
   $sql = "SELECT * FROM `test`";
 $result = mysqli_query($conn, $sql);
 
@@ -24,6 +28,15 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "0 results";
 }
+}
+
+
+function func1($param1, $param2)
+ {
+     echo $param1 . ', ' . $param2;
+ }
+
+
   $conn->close();
 
   ?>
