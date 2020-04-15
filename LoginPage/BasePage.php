@@ -1,3 +1,10 @@
+<?php
+include ('login.php');
+if(isset($_SESSION['login_user'])){
+header("location: game");
+}
+?>
+
 <!DOCTYPE html>
   <html>
 <head>
@@ -17,18 +24,18 @@
 <div id = "InputDetails">
 
 
-<form name="newForm"  onsubmit="OnSubmit()">
+<form name="newForm"  action ="" method="post">
 
 
   <b>UserID:</b>
 <br><br>
-  <input id = "ID" type="text" name="UserId" value="">
+  <input id = "username" type="text" name="username">
   <br><br>
   <b>Password:</b>
 <br><br>
-  <input type="password" name="Password" value="">
+  <input type="password" id ="password" name="password">
   <br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" name = "submit" value="Submit">
 
 </form>
 <br>
@@ -36,11 +43,20 @@
 </div>
 </div>
 
+
+
+
+
+<!--
 <script>
 function OnSubmit(){
+
 var nameValue = document.getElementById("ID").value;
 
-<?php  include 'M:\PhP\db_connection.php'; ?>
+
+
+
+
 
 
 
@@ -59,21 +75,12 @@ else if (nameValue == ""){
   alert("Please Enter Details");
 }
 }
-</script>
-<?php func1('q','s'); ?>
+</script> -->
 
-<?php
-echo "<h2>PHP is Fun!</h2>";
-?>
-
-<?php
-phpinfo();
-?>
-
-<?php
-header("Location: https://google.com");
-exit();
-?>
-
+</div>
+<footer id = "BottomBar">
+  <b id="logout"><a href="logout.php">Log Out</a></b>
+<p>BottomBar</p>
+</footer>
 </body>
 </html>
