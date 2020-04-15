@@ -7,7 +7,8 @@ let rects = {
   whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white",set: 5}
 };
 var score = 0;
-
+var difficulty;
+var mathType = "addition";
 var answer;
 var answerSquareFinder;
 var question = 0;
@@ -58,37 +59,48 @@ function NumberInSquareChecker(){
 function AnswerChecker(sqaureName){
   if (rects[sqaureName].set == answerSquareFinder){
     ScoreUpdate();
-      console.log(score);
-       RandomQuestion();
+    console.log(score);
+    RandomQuestionGenerator();
   }
 }
-
-function RandomQuestion(){
-  first = Math.floor(Math.random() * 11);
-  second = Math.floor(Math.random() * 11);
-  answerSquareFinder = Math.floor(Math.random() * 5);
-  console.log(answerSquareFinder);
-
-  answer = first + second
-  document.getElementById("demo").innerHTML = first + "+" + second;
-
-  for (var rect in rects) {
-    do{
-      document.getElementById(rect).innerHTML = Math.floor(Math.random() * 21);
+difficulty = 1;
+function RandomQuestionGenerator(){
+  var randomNumberDifficulty;
+  if (mathType == "addition"){
+    if (difficulty == 1){
+       randomNumberDifficulty = 10;
     }
-    while (document.getElementById(rect).innerHTML == answer)
-  };
+    else if (difficulty == 2){
+randomNumberDifficulty = 100;
+    }
+  else if (difficulty == 3){
+
+  }
+      first = Math.floor(Math.random() * randomNumberDifficulty);
+      second = Math.floor(Math.random() * randomNumberDifficulty);
+      answerSquareFinder = Math.floor(Math.random() * 5);
+
+}
+answer = first + second
+document.getElementById("demo").innerHTML = first + "+" + second;
+
+for (var rect in rects) {
+  do{
+    document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty * 2);
+  }
+  while (document.getElementById(rect).innerHTML == answer)
+};
 
 
-  SameAnswerChecker();
-  QuestionUpdate();
+SameAnswerChecker();
+QuestionUpdate();
 
-  return first, second;
+return first, second;
 
 }
 
 document.getElementById("demo").onmousedown = function() {
-  RandomQuestion();
+  RandomQuestionGenerator();
 }
 
 
@@ -103,12 +115,12 @@ function OnClickLoop(name){
 }
 
 function ScoreUpdate(){
-score++;
-document.getElementById("Score").innerHTML = score;
+  score++;
+  document.getElementById("Score").innerHTML = score;
 }
 
 function QuestionUpdate(){
 
-question++;
+  question++;
   document.getElementById("Question").innerHTML = question;
 }
