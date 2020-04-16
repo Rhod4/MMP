@@ -1,49 +1,69 @@
-
 <?php
 
-
-
 session_start();
-$error='';
+$error = '';
+
 if (isset($_POST['submit'])) {
 
-  if (empty($_POST['username']) || empty($_POST['password'])) {
+    if (empty($_POST['username']) || empty($_POST['password'])) {
 
-  }
-  else
-  {
+    } else {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
 
+        $conn = OpenCon();
 
+        echo " conn ";
+        $sql = "SELECT * FROM `test` WHERE username ='$username' AND password = '$password'";
+
+        echo " sql ";
+        $result = mysqli_query($conn, $sql) or die("bad");
+
+        $rows = mysqli_num_rows($result);
+
+        echo " row ";
+        if ($rows == 1) {
+
+            $_SESSION['user'] = $username;
+            echo 'ok';
+            header('location: http://users.aber.ac.uk/rhs24/MMP/');
+
+        } else {
+            echo 'incorrect';
+        }
+        echo " close ";
+        CloseCon($conn);
+
+    }
+}
+
+function OpenCon()
+{
 
     $dbhost = "db.dcs.aber.ac.uk";
     $dbuser = "rhs24";
     $dbpass = "rhodri18";
     $db = "cs39440_19_20_rhs24";
-    echo "submitAAAAAAA";
-    $conn = new mysqli_connect($dbhost, $dbuser, $dbpass, $db);
-        echo "fffff";
-    if (!$conn) {
-      echo "bad";
-    } else{echo "good";}
-    echo "goooood";
 
 
-
-    $sql ="select * from test where username ='$username' and type = '$password'"
-    or die("Connection failed: " . mysqli_connect_error());
-
-    $row = mysql_num_rows($sql);
-    if ($row ==1){
-      $_SESSION['user']=$username;
-      header('location: GamePage.html');
-
-    }else{ echo 'You have entered valid use name and password';
+    $conn = mysqli_connect("db.dcs.aber.ac.uk", $dbuser, "rhodri18", "cs39440_19_20_rhs24");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-    mysql_close($conn); // Closing Connection
-  }
+    if (!$conn) {
+        echo "bad";
+    } else {
+        echo " good ";
+    }
+    return $conn;
 }
+
+
+function CloseCon($conn)
+{
+    $conn->close();
+}
+
 ?>

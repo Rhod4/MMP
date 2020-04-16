@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="aber" uuid="2f3e784d-c9f7-481d-9b3d-ec4e0e2b49f2">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>rhs24</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

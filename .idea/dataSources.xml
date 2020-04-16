@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="aber" uuid="2f3e784d-c9f7-481d-9b3d-ec4e0e2b49f2">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db.dcs.aber.ac.uk:3306/cs39440_19_20_rhs24</jdbc-url>
+    </data-source>
+  </component>
+</project>
