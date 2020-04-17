@@ -8,7 +8,7 @@ let rects = {
 };
 var score = 0;
 var difficulty;
-var mathType = "addition";
+var mathType = "subtraction";
 var answer;
 var answerSquareFinder;
 var question = 0;
@@ -66,23 +66,42 @@ function AnswerChecker(sqaureName){
 difficulty = 1;
 function RandomQuestionGenerator(){
   var randomNumberDifficulty;
-  if (mathType == "addition"){
+
+  switch(mathType){
+  case "addition":
     if (difficulty == 1){
        randomNumberDifficulty = 10;
     }
+
     else if (difficulty == 2){
 randomNumberDifficulty = 100;
     }
   else if (difficulty == 3){
-
-  }
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+}
+else{
+  /////////////////////////
+  /////////////////////////
+}
       first = Math.floor(Math.random() * randomNumberDifficulty);
       second = Math.floor(Math.random() * randomNumberDifficulty);
       answerSquareFinder = Math.floor(Math.random() * 5);
+break;
 
+case "subtraction":
+if (difficulty == 1){
+   randomNumberDifficulty = 10;
+   first = Math.floor(Math.random() * randomNumberDifficulty);
+   second = Math.floor(Math.random() * randomNumberDifficulty);
+   answerSquareFinder = Math.floor(Math.random() * 5);
 }
-answer = first + second
+break;
+}
 document.getElementById("demo").innerHTML = first + "+" + second;
+answer = first + second
+
 
 for (var rect in rects) {
   do{

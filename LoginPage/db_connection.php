@@ -1,8 +1,8 @@
 
   <?php
+  // Include config file
 
 
-//opens the connection to the database
   function OpenCon()
   {
       $dbhost = "db.dcs.aber.ac.uk";
@@ -11,19 +11,27 @@
       $db = "cs39440_19_20_rhs24";
 
 
-      $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
+      $conn = mysqli_connect("db.dcs.aber.ac.uk", $dbuser, "rhodri18", "cs39440_19_20_rhs24");
       if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
       }
+      if (!$conn) {
+          echo "bad";
+      } else {
+          echo " good ";
       }
       return $conn;
   }
+  // $query = "SELECT * FROM `test";
 
-//closes the connection to the database
-  function CloseCon($conn)
-  {
-      $conn->close();
-  }
 
+
+
+
+
+
+
+
+  $conn->close();
 
   ?>
