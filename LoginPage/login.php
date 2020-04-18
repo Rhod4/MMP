@@ -1,5 +1,5 @@
 <?php
-include db_connection.php;
+include('db_connection.php');
 
 session_start();
 $error = '';
@@ -32,19 +32,16 @@ if (isset($_POST['submit'])) {
 
             $_SESSION['user'] = $username;
 
-            header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.html');
+            header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
 
         } else {
             echo 'incorrect';
         }
-      
+
         CloseCon($conn);
 
     }
 }
-
-
-
 
 
 

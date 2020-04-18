@@ -16,22 +16,17 @@
           die("Connection failed: " . $conn->connect_error);
       }
       if (!$conn) {
-          echo "bad";
+
       } else {
-          echo " good ";
+
       }
       return $conn;
   }
   // $query = "SELECT * FROM `test";
 
+  function CloseCon($conn)
+  {
 
-
-
-
-
-
-
-
-  $conn->close();
-
+      $conn->close();
+  }
   ?>
