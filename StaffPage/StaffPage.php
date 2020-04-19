@@ -27,13 +27,14 @@
             <th>Pass</th>
             <th>year</th>
             <th id="remove">remove </th>
+            <th id="edit">edit</th>
             </thead>
 
 
             <tbody>
+
             <?php
             include('db_connection.php');
-
 
             $conn = OpenCon();
 
@@ -47,15 +48,21 @@
                 $list = $row["username"];
                 $field2name = $row["password"];
 
-                echo '  <tr>
-     <td>' . $list . '</td> 
-     <td>' . $field2name . '</td>
+                  echo '  <tr>
+                    <td>' . $list . '</td>
+                    <td>' . $field2name . '</td>
                    <td>asdd</td>
-                   <td> <a   class="remove">Delete</a></td>  
-          </tr>';
-            }
-            CloseCon($conn);
-            ?>
+                   <td> <a   class="remove">Delete</a></td>
+                   <td> <a   class="edit"><form action="script.php" method="get">
+               <input type="submit" value="edit">
+               </form></a></td>
+                 </tr>
+                  ';    }CloseCon($conn);
+
+                    ?>
+
+
+
             </tbody>
         </table>
 
@@ -104,6 +111,11 @@
                 <?php echo console.log("asd");?>
             });
 
+            $('#StudentDataBase').on('click', 'a.edit', function () {
+
+
+
+  });
 
 
 

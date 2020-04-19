@@ -10,6 +10,22 @@
 </head>
 <body>
 
+
+  <div class="form-popup" id="StartBar">
+    <form action="/action_page.php" class="form-container">
+      <h1>Choose Game Type</h1>
+      <label for="GameMode"><b>GameMode</b></label>
+      <select id="GameMode" name="GameMode">
+<option value="+">+</option>
+<option value="-">-</option>
+</select>
+
+ <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+
+ </form>
+</div>
+
 <div id = "TitleBar">
 <h1 id="TitleText"> GamePage</h1>
 </div>
@@ -17,18 +33,22 @@
 <p id="demo">Click me.</p>
 <div id = "JavaGame">
 <script src="Game.js"  type="text/javascript">
+
+
+
  </script>
 </div>
 
 <div id = "Progress">
-
   <div id= "Score"></div>
   <Div id= "Break"></div>
   <div id= "Question"></div>
-
 </div>
 <footer id = "BottomBar">
 <p>BottomBar</p>
 </footer>
 
 </body>
+<script>
+
+</script>

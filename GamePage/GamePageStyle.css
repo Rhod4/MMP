@@ -1,3 +1,4 @@
+
 #TitleBar{
 height: 60px;
 background-color: #ECECEC;
@@ -64,4 +65,28 @@ background-color: #ECECEC;
 position: fixed;
  bottom: 0;
 font-size: 15px;
+}
+
+#StartBar{
+  height: 160px;
+  width: 30%;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+border-style: groove;
+ }
+
+ #StartBar.form-popup {
+
+
+   position: absolute;
+     top: 50%;
+     left: 50%;
+     margin-right: -50%;
+     transform: translate(-50%, -50%)
+}
+#StartBar.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
 }

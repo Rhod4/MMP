@@ -1,3 +1,15 @@
+var gameMode;
+
+function closeForm() {
+  gameMode = document.getElementById('GameMode').value;
+  document.getElementById("StartBar").style.display = "none";
+}
+
+
+
+
+
+//this stores the information for the boxes that the user clicks on
 let rects = {
   redSquare: { x: 10, y: 10, w: 50, h: 50, fillStyle: "red", set: 0},
   blueSquare: { x: 95, y: 10, w: 50, h: 50,fillStyle: "lightblue",set: 1},
@@ -8,7 +20,7 @@ let rects = {
 };
 var score = 0;
 var difficulty;
-var mathType = "subtraction";
+
 var answer;
 var answerSquareFinder;
 var question = 0;
@@ -28,6 +40,7 @@ function DivMaker(){
     newDiv.style.left = rects[rect].x+'px';
     newDiv.style.top = rects[rect].y+'px';
     newDiv.style.aling = "center";
+    newDiv.style.fontSize  = "20px";
 
     var newContent = document.createTextNode("");
     newDiv.appendChild(newContent);
@@ -52,94 +65,156 @@ function SameAnswerChecker(){
   };
 }
 
-function NumberInSquareChecker(){
 
-}
-
-function AnswerChecker(sqaureName){
-  if (rects[sqaureName].set == answerSquareFinder){
-    ScoreUpdate();
-    console.log(score);
-    RandomQuestionGenerator();
-  }
-}
 difficulty = 1;
+
+/* The function that allows the
+creation of the questions based on the users details*/
 function RandomQuestionGenerator(){
   var randomNumberDifficulty;
 
-  switch(mathType){
-  case "addition":
+  if (difficulty == 1){
+    randomNumberDifficulty = 10;
+  }
+
+  else if (difficulty == 2){
+    randomNumberDifficulty = 100;
+  }
+  else if (difficulty == 3){
+    //////////////////////////////
+    //////////////////////////////
+    //////////////////////////////
+  }
+  else{
+
+  }
+
+  switch(gameMode){
+    case "+":
     if (difficulty == 1){
-       randomNumberDifficulty = 10;
+      randomNumberDifficulty = 10;
     }
 
     else if (difficulty == 2){
-randomNumberDifficulty = 100;
+      randomNumberDifficulty = 100;
     }
-  else if (difficulty == 3){
-//////////////////////////////
-//////////////////////////////
-//////////////////////////////
-}
-else{
-  /////////////////////////
-  /////////////////////////
-}
-      first = Math.floor(Math.random() * randomNumberDifficulty);
-      second = Math.floor(Math.random() * randomNumberDifficulty);
-      answerSquareFinder = Math.floor(Math.random() * 5);
-break;
+    first = Math.floor(Math.random() * randomNumberDifficulty);
+    second = Math.floor(Math.random() * randomNumberDifficulty);
+    answerSquareFinder = Math.floor(Math.random() * 5);
 
-case "subtraction":
-if (difficulty == 1){
-   randomNumberDifficulty = 10;
-   first = Math.floor(Math.random() * randomNumberDifficulty);
-   second = Math.floor(Math.random() * randomNumberDifficulty);
-   answerSquareFinder = Math.floor(Math.random() * 5);
-}
-break;
-}
-document.getElementById("demo").innerHTML = first + "+" + second;
-answer = first + second
+    document.getElementById("demo").innerHTML = first + "+" + second;
+    answer = first + second
 
 
-for (var rect in rects) {
-  do{
-    document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty * 2);
+    break;
+
+    case "-":
+    if (difficulty == 1){
+      randomNumberDifficulty = 10;
+    }
+
+    else if (difficulty == 2){
+      randomNumberDifficulty = 100;
+    }
+    first = Math.floor(Math.random() * randomNumberDifficulty);
+    second = Math.floor(Math.random() * randomNumberDifficulty);
+    answerSquareFinder = Math.floor(Math.random() * 5);
+
+    document.getElementById("demo").innerHTML = first + "-" + second;
+    answer = first - second
+
+    randomNumberDifficulty = answer;
+    break;
+
+
+
+    default:
+    document.getElementById("demo").innerHTML = score;
+    for (var rect in rects) {
+
+      var element = document.getElementById(rect);
+      element.parentNode.removeChild(element);
+    };
+    break;
+
+
+
   }
-  while (document.getElementById(rect).innerHTML == answer)
-};
+  for (var rect in rects) {
+    do{
+      if (gameMode == "-"){
+        document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty);
+      }else{
+        document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty * 2);
+      }
+    }
+    while (document.getElementById(rect).innerHTML == answer)
+  };
 
 
-SameAnswerChecker();
-QuestionUpdate();
+  //runs for every rect in the array of rects
 
-return first, second;
 
+
+  SameAnswerChecker();
+  QuestionUpdate();
+
+  return first, second;
 }
-
+//when the click me button is clicked. It starts the game
 document.getElementById("demo").onmousedown = function() {
+  if(gameMode == null){}
+  else{
   RandomQuestionGenerator();
-}
+}}
 
 
 /*This function runs as when it was part of the DivMaker function,
-it would only run the last objects name for all the objects*/
+it would only run the last object for all the objects*/
 function OnClickLoop(name){
-  console.log(name);
+
   document.getElementById(name).addEventListener("mousedown", function (event) {
     AnswerChecker(sqaureName = name);
-    console.log(name);
-  });
-}
+    });
 
+
+}
+//Updates the text for the score the user has
 function ScoreUpdate(){
   score++;
   document.getElementById("Score").innerHTML = score;
+  //
+  //
 }
+//Updates the text for what question the user is on
 
-function QuestionUpdate(){
+//checks the answers that the usr clicks
+function AnswerChecker(sqaureName){
+  if(gameMode == null){}
+  else{
+  if (rects[sqaureName].set == answerSquareFinder){
+    ScoreUpdate();
+    RandomQuestionGenerator();  }
+    else{RandomQuestionGenerator();}}}
 
-  question++;
-  document.getElementById("Question").innerHTML = question;
-}
+    function QuestionUpdate(){
+
+      question++;
+      if (question == 10){gameMode = "default"}
+      document.getElementById("Question").innerHTML = question;
+    }
+    //When the tab is closed, this function will run
+    // window.addEventListener('beforeunload', function (e) {
+    //           e.preventDefault();
+    //           e.returnValue = '';
+    //           console.log(score);
+    //       });
+
+    function TextAnswerInserter(rect){
+      document.getElementById(rect).innerHTML = Math.floor(Math.random() * answer * 2);
+    }
+
+    function EndGame(){
+
+
+    }
