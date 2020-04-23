@@ -1,23 +1,24 @@
 
 #TitleBar{
-height: 60px;
-background-color: #ECECEC;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 90%;
+  height: 60px;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
 #TitleBar h1{
-font-size:50px;
-padding-left: 10px;
-color: gray;
+  font-size:50px;
+  padding-left: 10px;
+  color: gray;
 }
 
 body{
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: space-between
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+    font-size:20px;
 }
 
 #JavaGame{
@@ -27,15 +28,16 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 #Game{
-flex-direction:row;
+  flex-direction:row;
 }
 
 #Progress{
   width: 80%;
-height: 50px;
+  height: 50px;
   background-color: #ECECEC;
   display: flex;
   justify-content: center;
@@ -44,46 +46,53 @@ height: 50px;
 #Question {
   width: 100px;
   height: 50px;
-    background-color: white;
+  background-color: white;
+  font-size:40px;
+  text-align: center;
+  border-style: groove;
 }
 #Break {
   width: 100px;
   height: 50px;
-    background-color: #ECECEC;
+  background-color: #ECECEC;
 }
 
 #Score {
   width: 100px;
   height: 50px;
-    background-color: white;
+  background-color: white;
+  font-size:40px;
+  text-align: center;
+  border-style: groove;
 }
 
 #BottomBar{
-height: 100px;
-width: 100%;
-background-color: #ECECEC;
-position: fixed;
- bottom: 0;
-font-size: 15px;
+  height: 100px;
+  width: 100%;
+  background-color: #ECECEC;
+  position: fixed;
+  bottom: 0;
+  font-size: 15px;
 }
 
 #StartBar{
-  height: 160px;
-  width: 30%;
+  height: 200px;
+  width: 35%;
   background-color: #ECECEC;
   display: flex;
   justify-content: center;
-border-style: groove;
- }
+  border-style: groove;
+  padding: 10px; 
+}
 
- #StartBar.form-popup {
+#StartBar.form-popup {
 
 
-   position: absolute;
-     top: 50%;
-     left: 50%;
-     margin-right: -50%;
-     transform: translate(-50%, -50%)
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 #StartBar.form-container {
   max-width: 300px;

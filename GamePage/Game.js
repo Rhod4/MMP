@@ -31,7 +31,7 @@ function DivMaker(){
   //for loop that runs for every object in the rects array
   for (var rect in rects) {
     //creates a div object out of the rects array
-    var newDiv = document.createElement(rect);
+    var newDiv = document.createElement("Button");
     newDiv.style.width = "100px";
     newDiv.style.height = "100px";
     newDiv.style.background = rects[rect].fillStyle;
@@ -40,7 +40,12 @@ function DivMaker(){
     newDiv.style.left = rects[rect].x+'px';
     newDiv.style.top = rects[rect].y+'px';
     newDiv.style.aling = "center";
-    newDiv.style.fontSize  = "20px";
+    newDiv.style.fontSize  = "50px";
+    newDiv.style.boxShadow = "5px 5px 2px grey";
+    newDiv.style.borderStyle = "outset";
+    newDiv.style.textAlign = "center";
+
+
 
     var newContent = document.createTextNode("");
     newDiv.appendChild(newContent);
@@ -58,11 +63,13 @@ function DivMaker(){
 
 /*function that sets one of the answer divs to be correct*/
 function SameAnswerChecker(){
+        if (question != 10){
   for (var rect in rects) {
     if (rects[rect].set == answerSquareFinder){
       document.getElementById(rect).innerHTML = answer;
     }
   };
+}
 }
 
 
@@ -102,7 +109,8 @@ function RandomQuestionGenerator(){
     second = Math.floor(Math.random() * randomNumberDifficulty);
     answerSquareFinder = Math.floor(Math.random() * 5);
 
-    document.getElementById("demo").innerHTML = first + "+" + second;
+    document.getElementById("StartGame").innerHTML = first + "+" + second;
+
     answer = first + second
 
 
@@ -120,7 +128,7 @@ function RandomQuestionGenerator(){
     second = Math.floor(Math.random() * randomNumberDifficulty);
     answerSquareFinder = Math.floor(Math.random() * 5);
 
-    document.getElementById("demo").innerHTML = first + "-" + second;
+    document.getElementById("StartGame").innerHTML = first + "-" + second;
     answer = first - second
 
     randomNumberDifficulty = answer;
@@ -129,17 +137,20 @@ function RandomQuestionGenerator(){
 
 
     default:
-    document.getElementById("demo").innerHTML = score;
+    document.getElementById("StartGame").innerHTML = score;
     for (var rect in rects) {
-
+      //Allows the game to end
       var element = document.getElementById(rect);
       element.parentNode.removeChild(element);
+
     };
     break;
 
 
 
   }
+
+        if (question != 10){
   for (var rect in rects) {
     do{
       if (gameMode == "-"){
@@ -150,7 +161,7 @@ function RandomQuestionGenerator(){
     }
     while (document.getElementById(rect).innerHTML == answer)
   };
-
+};
 
   //runs for every rect in the array of rects
 
@@ -162,7 +173,7 @@ function RandomQuestionGenerator(){
   return first, second;
 }
 //when the click me button is clicked. It starts the game
-document.getElementById("demo").onmousedown = function() {
+document.getElementById("StartGame").onmousedown = function() {
   if(gameMode == null){}
   else{
   RandomQuestionGenerator();

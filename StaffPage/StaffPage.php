@@ -24,7 +24,7 @@
         <table id="StudentDataBase" class="display">
             <thead>
             <th>Name</th>
-            <th>Pass</th>
+
             <th>year</th>
             <th id="remove">remove </th>
             <th id="edit">edit</th>
@@ -46,13 +46,14 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 //fill array how to fill array that will look like bellow from database???
                 $list = $row["username"];
-                $field2name = $row["password"];
+                $year = $row["date"];
 
                   echo '  <tr>
                     <td>' . $list . '</td>
-                    <td>' . $field2name . '</td>
-                   <td>asdd</td>
-                   <td> <a   class="remove">Delete</a></td>
+                    <td>' . $year . '</td>
+
+                   <td> <a   class="remove"><form action="script.php" method="get">
+               <input type="submit" value="delete"></form></a></td>
                    <td> <a   class="edit"><form action="script.php" method="get">
                <input type="submit" value="edit">
                </form></a></td>
@@ -106,9 +107,9 @@
             var myTable = $('#StudentDataBase').DataTable();
 
             $('#StudentDataBase').on('click', 'a.remove', function () {
-                console.log("a");
+  <?php echo console.log("asd");?>
                 myTable.row($(this).parents('tr')).remove().draw();
-                <?php echo console.log("asd");?>
+
             });
 
             $('#StudentDataBase').on('click', 'a.edit', function () {
