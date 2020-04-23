@@ -1,9 +1,11 @@
 <?php
-include('db_connection.php');
+
 
 session_start();
+?>
+<?php
 $error = '';
-
+include('db_connection.php');
 
 
 
@@ -12,7 +14,7 @@ if (isset($_POST['submit'])) {
   if (empty($_POST['username']) || empty($_POST['password'])) {
 
   } else {
-
+//sets the $ variables to be what the user has entered within the form
     $username = $_POST['username'];
     $password = $_POST['password'];
     $school = $_POST['school'];
@@ -24,7 +26,7 @@ if (isset($_POST['submit'])) {
 
 
     $result = mysqli_query($conn, $sql) or die("bad");
-    
+
     //sets $rows to 1 if user exists
     $rows = mysqli_num_rows($result);
     //gets users info
@@ -32,7 +34,9 @@ if (isset($_POST['submit'])) {
 
     if ($rows == 1) {
       $_SESSION['user'] = $username;
+        $_SESSION["school"] = $school;
       if ($user["category"] == 0){
+      
         header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
       } else if ($user["category"] == 1){
         header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.html');

@@ -1,134 +1,160 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="StaffPageStyle.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="StaffPageStyle.css">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 
-    <title>Rhs24 MMP</title>
+  <title>Rhs24 MMP</title>
 </head>
 <body>
 
-<div id="TitleBar">
+  <div id="TitleBar">
     <h1 id="TitleText"> Staff Page</h1>
-</div>
+  </div>
 
-<div id="Table">
+  <div id="Table">
     <h1 id="TableText"></h1>
 
     <div id="Students">
-        <h1 id="StudentNames"></h1>
+      <h1 id="StudentNames"></h1>
 
-        <table id="StudentDataBase" class="display">
-            <thead>
-            <th>Name</th>
+      <table id="StudentDataBase" class="display">
+        <thead>
+          <th>Name</th>
 
-            <th>year</th>
-            <th id="remove">remove </th>
-            <th id="edit">edit</th>
-            </thead>
+          <th>year</th>
+          <th>difficulty</th>
+          <th id="removeTitle">remove </th>
 
-
-            <tbody>
-
-            <?php
-            include('db_connection.php');
-
-            $conn = OpenCon();
-
-            $sql = "SELECT * FROM `test`";
+        </thead>
 
 
-            $result = mysqli_query($conn, $sql) or die("bad");
+        <tbody>
 
-            while ($row = mysqli_fetch_assoc($result)) {
-                //fill array how to fill array that will look like bellow from database???
-                $list = $row["username"];
-                $year = $row["date"];
+          <?php
+          include('db_connection.php');
 
-                  echo '  <tr>
-                    <td>' . $list . '</td>
-                    <td>' . $year . '</td>
+          $conn = OpenCon();
 
-                   <td> <a   class="remove"><form action="script.php" method="get">
-               <input type="submit" value="delete"></form></a></td>
-                   <td> <a   class="edit"><form action="script.php" method="get">
-               <input type="submit" value="edit">
-               </form></a></td>
-                 </tr>
-                  ';    }CloseCon($conn);
+          $table = $_SESSION["school"];
 
-                    ?>
+          $sql = "SELECT * FROM $table";
 
 
+          $result = mysqli_query($conn, $sql) or die("bad");
 
-            </tbody>
+          while ($row = mysqli_fetch_assoc($result)) {
+            if ($row["category"] == "1"){
+            //fill array how to fill array that will look like bellow from database???
+            $list = $row["username"];
+            $year = $row["date"];
+            $difficulty = $row["difficulty"];
+
+            echo '  <tr>
+            <td>' . $list . '</td>
+            <td>' . $year . '</td>
+            <td>' . $difficulty . '</td>
+
+            <td> <a   class="remove"><form action="script.php" method="get">
+            <input type="submit" value="delete"></form></a></td>
+
+            </tr>
+            ';   } }CloseCon($conn);
+
+            ?>
+
+
+
+          </tbody>
         </table>
 
+
+<div class="form-popup" id="StartBar">
+<form class="form-container" method="post">
+    <h1>Edit student</h1>
+      <input type="text" id ="student" name="student">
+        <input type="text" id ="year" name="year">
+          <input type="text" id ="difficulty" name="difficulty">
+
+  <input type="submit" class="btn cancel" value="Submit" onclick="closeForm()">
+
+<?php
+$student = $_POST['student'];
+$year = $_POST['year'];
+$difficulty = $_POST['difficulty'];
+
+
+  $conn = OpenCon();
+
+  $table = $_SESSION["school"];
+  $sql = "UPDATE $table SET difficulty = '$difficulty' WHERE username = '$student'";
+
+  if ($conn->query($sql) === TRUE) {
+
+  } else {
+
+  }
+        CloseCon($conn);
+?>
+    </form>
+  </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script type="text/javascript" charset="utf8"
-                src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+        src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
 
         <script>
-
-
-            function Student(name, year, score) {
-                this.name = name;
-                this.year = year;
-                this.score = score;
-
-            }
-
-
-            $(document).ready(function () {
-                $('#StudentDataBase').DataTable();
-
-
-            });
-
-
-            // $('#StudentDataBase tbody').on('click', 'td', function () {
-            //
-            //     var clickedStudent = table.cell(this, 0).data();
-            //     var clickedStudentScore = table.cell(this, 1).data();
-            //
-            //     fullStudent = table.row(this).data();
-            //     if (document.getElementById("box")) {
-            //         var removeBox = document.getElementById('box');
-            //         removeBox.remove()
-            //     }
-            //
-            //
-            // });
-            var myTable = $('#StudentDataBase').DataTable();
-
-            $('#StudentDataBase').on('click', 'a.remove', function () {
-  <?php echo console.log("asd");?>
-                myTable.row($(this).parents('tr')).remove().draw();
-
-            });
-
-            $('#StudentDataBase').on('click', 'a.edit', function () {
-
-
-
-  });
-
-
-
-            var a = 3;
+  document.getElementById("StartBar").style.display = "none";
 
 
 
 
+        $(document).ready(function () {
+          $('#StudentDataBase').DataTable();
+
+
+        });
+
+
+
+        var myTable = $('#StudentDataBase').DataTable();
+
+        $('#StudentDataBase').on('click', 'a.remove', function () {
+
+          myTable.row($(this).parents('tr')).remove().draw();
+
+        });
+
+        $('#StudentDataBase').on('click', 'td', function () {
+
+          document.getElementById("StartBar").style.display = "block";
+              //puts the users data into the edit section
+              document.getElementById("student").value = myTable.cell(this, 0).data();
+              document.getElementById("year").value = myTable.cell(this, 1).data();
+              document.getElementById("difficulty").value = myTable.cell(this, 2).data();
+              //if the user is not an admin, it doesnt let the user change the data
+              document.getElementById("student").readOnly = true;
+              document.getElementById("year").readOnly = true;
+
+
+        });
+
+
+        function closeForm() {
+
+          document.getElementById("StartBar").style.display = "none";
+        }
 
         </script>
 
-    </div>
+      </div>
 
-</div>
-</body>
+    </div>
+  </body>

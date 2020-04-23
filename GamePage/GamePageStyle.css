@@ -82,12 +82,12 @@ body{
   display: flex;
   justify-content: center;
   border-style: groove;
-  padding: 10px; 
+  padding: 10px;
 }
 
 #StartBar.form-popup {
 
-
+background-color: gray;
   position: absolute;
   top: 50%;
   left: 50%;
