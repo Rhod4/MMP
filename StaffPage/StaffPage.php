@@ -53,7 +53,7 @@ session_start();
             if ($row["category"] == "1"){
             //fill array how to fill array that will look like bellow from database???
             $list = $row["username"];
-            $year = $row["date"];
+            $year = $row["year"];
             $difficulty = $row["difficulty"];
 
             echo '  <tr>
@@ -93,7 +93,14 @@ $difficulty = $_POST['difficulty'];
   $conn = OpenCon();
 
   $table = $_SESSION["school"];
-  $sql = "UPDATE $table SET difficulty = '$difficulty' WHERE username = '$student'";
+  $user = $_SESSION['user'];
+
+  $sql = "SELECT * FROM $table WHERE username ='$user'";
+  $result = mysqli_query($conn, $sql) or die("bad");
+  $studentData = mysqli_fetch_assoc($result);
+
+$num = $studentData["num"];
+  $sql = "UPDATE $table SET difficulty = '$difficulty', username = '$student', year = '$year' WHERE num = '$num'";
 
   if ($conn->query($sql) === TRUE) {
 
@@ -140,9 +147,14 @@ $difficulty = $_POST['difficulty'];
               document.getElementById("year").value = myTable.cell(this, 1).data();
               document.getElementById("difficulty").value = myTable.cell(this, 2).data();
               //if the user is not an admin, it doesnt let the user change the data
+
+
+              var adminPriv = "<?php echo  $_SESSION["Admin"] ?>";
+              console.log(adminPriv);
+              if (adminPriv != "admin"){
               document.getElementById("student").readOnly = true;
               document.getElementById("year").readOnly = true;
-
+              }
 
         });
 

@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
 echo $school;
         if ($school == "admin"){
           $_SESSION["school"] = $AdminSchool;
+          $_SESSION["Admin"] = $school;
 header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         }
       else if ($user["category"] == 0){
@@ -46,7 +47,7 @@ header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
       } else if ($user["category"] == 1){
             $_SESSION["school"] = $school;
-        header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.html');
+        header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
       }
     } else {
       echo 'incorrect';

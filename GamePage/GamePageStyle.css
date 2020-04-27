@@ -75,7 +75,7 @@ body{
   font-size: 15px;
 }
 
-#StartBar{
+#StartBar, #EndScreen {
   height: 200px;
   width: 35%;
   background-color: #ECECEC;
@@ -85,7 +85,7 @@ body{
   padding: 10px;
 }
 
-#StartBar.form-popup {
+#StartBar.form-popup, #EndScreen.form-popup{
 
 background-color: gray;
   position: absolute;
@@ -94,7 +94,7 @@ background-color: gray;
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
-#StartBar.form-container {
+#StartBar.form-container, #EndScreen.form-container{
   max-width: 300px;
   padding: 10px;
   background-color: white;

@@ -1,3 +1,11 @@
+  document.getElementById("EndScreen").style.display = "none";
+
+
+var difficulty;
+//this section gets the data for the difficulty variable from the php on the GamePage.php file
+var difficultyPHP = document.getElementById('GameScript')
+difficulty = difficultyPHP.getAttribute("difficulty");
+
 var gameMode;
 
 function closeForm() {
@@ -19,7 +27,7 @@ let rects = {
   whiteSquare: { x: 190, y: 90, w: 50, h: 50,fillStyle: "white",set: 5}
 };
 var score = 0;
-var difficulty;
+
 
 var answer;
 var answerSquareFinder;
@@ -73,7 +81,6 @@ function SameAnswerChecker(){
 }
 
 
-difficulty = 1;
 
 /* The function that allows the
 creation of the questions based on the users details*/
@@ -142,6 +149,8 @@ function RandomQuestionGenerator(){
       //Allows the game to end
       var element = document.getElementById(rect);
       element.parentNode.removeChild(element);
+EndGame();
+
 
     };
     break;
@@ -211,21 +220,30 @@ function AnswerChecker(sqaureName){
     function QuestionUpdate(){
 
       question++;
-      if (question == 10){gameMode = "default"}
+      if (question == 10){gameMode = "default"
+
+
+    }
       document.getElementById("Question").innerHTML = question;
     }
-    //When the tab is closed, this function will run
-    // window.addEventListener('beforeunload', function (e) {
-    //           e.preventDefault();
-    //           e.returnValue = '';
-    //           console.log(score);
-    //       });
+
 
     function TextAnswerInserter(rect){
       document.getElementById(rect).innerHTML = Math.floor(Math.random() * answer * 2);
     }
 
     function EndGame(){
-
-
+  document.getElementById("JavaGame").style.display = "none";
+  document.getElementById("EndScore").value  = score;
+  var gameType = document.getElementById('GameMode').value;
+console.log(gameType);
+  if (gameType =="+"){
+document.getElementById("EndMode").value  = "addition";
+}
+else if
+(gameType =="-"){
+document.getElementById("EndMode").value  = "subtraction";
+}
+else {console.log(gameType)}
+document.forms["EndForm"].submit();
     }
