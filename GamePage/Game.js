@@ -235,8 +235,11 @@ function AnswerChecker(sqaureName){
     function EndGame(){
   document.getElementById("JavaGame").style.display = "none";
   document.getElementById("EndScore").value  = score;
+      document.getElementById("EndScore").readOnly = true;
   var gameType = document.getElementById('GameMode').value;
-console.log(gameType);
+        document.getElementById("EndMode").readOnly = true;
+
+
   if (gameType =="+"){
 document.getElementById("EndMode").value  = "addition";
 }

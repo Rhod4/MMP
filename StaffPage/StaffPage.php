@@ -26,11 +26,12 @@ session_start();
 
       <table id="StudentDataBase" class="display">
         <thead>
+          <th>number</th>
           <th>Name</th>
 
           <th>year</th>
           <th>difficulty</th>
-          <th id="removeTitle">remove </th>
+          <th>addition</td>
 
         </thead>
 
@@ -53,19 +54,26 @@ session_start();
             if ($row["category"] == "1"){
             //fill array how to fill array that will look like bellow from database???
             $list = $row["username"];
-            $year = $row["year"];
             $difficulty = $row["difficulty"];
+            $num = $row["num"];
+
 
             echo '  <tr>
-            <td>' . $list . '</td>
-            <td>' . $year . '</td>
-            <td>' . $difficulty . '</td>
-
-            <td> <a   class="remove"><form action="script.php" method="get">
-            <input type="submit" value="delete"></form></a></td>
+            <td>' . $num . '</td>
+            <td>' . $row["username"] . '</td>
+            <td>' . $row["year"] . '</td>
+            <td>' . $row["difficulty"] . '</td>
+            <td>' . $row["addition"] . '</td>
 
             </tr>
-            ';   } }CloseCon($conn);
+            ';   }
+
+
+
+
+
+          }CloseCon($conn);
+
 
             ?>
 
@@ -78,35 +86,55 @@ session_start();
 <div class="form-popup" id="StartBar">
 <form class="form-container" method="post">
     <h1>Edit student</h1>
+    <input type="hidden" id ="number" name="number">
       <input type="text" id ="student" name="student">
-        <input type="text" id ="year" name="year">
-          <input type="text" id ="difficulty" name="difficulty">
+        <input type="number" id ="year" name="year">
+          <select id="difficulty" name="difficulty">
+          <option value="1">1</option>
+          <option value="2">2</option>
 
   <input type="submit" class="btn cancel" value="Submit" onclick="closeForm()">
+<input type="submit" value="remove" name="removeUser" id = "removeUser">
 
 <?php
 $student = $_POST['student'];
 $year = $_POST['year'];
 $difficulty = $_POST['difficulty'];
-
+  $number = $_POST['number'];
 
   $conn = OpenCon();
 
   $table = $_SESSION["school"];
   $user = $_SESSION['user'];
 
+  if(!isset($_POST['removeUser'])) {
   $sql = "SELECT * FROM $table WHERE username ='$user'";
   $result = mysqli_query($conn, $sql) or die("bad");
   $studentData = mysqli_fetch_assoc($result);
 
-$num = $studentData["num"];
-  $sql = "UPDATE $table SET difficulty = '$difficulty', username = '$student', year = '$year' WHERE num = '$num'";
+
+  $sql = "UPDATE $table SET difficulty = '$difficulty', username = '$student', year = '$year' WHERE num = '$number'";
 
   if ($conn->query($sql) === TRUE) {
 
   } else {
 
   }
+}
+
+              if(isset($_POST['removeUser'])) {
+
+                echo $number;
+                  echo ("a");
+              $sql = "DELETE FROM $table WHERE num = '$number'";
+
+              if ($conn->query($sql) === TRUE) {
+                  echo ("works");
+              } else {
+                echo "bad" . mysqli_error($conn);
+              }}
+
+
         CloseCon($conn);
 ?>
     </form>
@@ -121,21 +149,22 @@ $num = $studentData["num"];
   document.getElementById("StartBar").style.display = "none";
 
 
+          var myTable = $('#StudentDataBase').DataTable();
 
 
         $(document).ready(function () {
           $('#StudentDataBase').DataTable();
 
-
+            myTable.column( 0 ).visible( false );
         });
 
 
 
-        var myTable = $('#StudentDataBase').DataTable();
 
         $('#StudentDataBase').on('click', 'a.remove', function () {
 
-          myTable.row($(this).parents('tr')).remove().draw();
+
+
 
         });
 
@@ -143,9 +172,12 @@ $num = $studentData["num"];
 
           document.getElementById("StartBar").style.display = "block";
               //puts the users data into the edit section
-              document.getElementById("student").value = myTable.cell(this, 0).data();
-              document.getElementById("year").value = myTable.cell(this, 1).data();
-              document.getElementById("difficulty").value = myTable.cell(this, 2).data();
+                document.getElementById("number").value = myTable.cell(this, 0).data();
+              document.getElementById("student").value = myTable.cell(this, 1).data();
+              document.getElementById("year").value = myTable.cell(this, 2).data();
+              document.getElementById("difficulty").value = myTable.cell(this, 3).data();
+
+
               //if the user is not an admin, it doesnt let the user change the data
 
 
@@ -154,7 +186,9 @@ $num = $studentData["num"];
               if (adminPriv != "admin"){
               document.getElementById("student").readOnly = true;
               document.getElementById("year").readOnly = true;
+              document.getElementById("removeUser").style.display='none';
               }
+
 
         });
 

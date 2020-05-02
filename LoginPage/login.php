@@ -44,6 +44,7 @@ header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         }
       else if ($user["category"] == 0){
     $_SESSION["school"] = $school;
+        $_SESSION["Admin"] = "";
         header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
       } else if ($user["category"] == 1){
             $_SESSION["school"] = $school;
