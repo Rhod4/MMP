@@ -52,17 +52,9 @@ function DivMaker(){
     newDiv.style.boxShadow = "5px 5px 2px grey";
     newDiv.style.borderStyle = "outset";
     newDiv.style.textAlign = "center";
-
-
-
-    var newContent = document.createTextNode("");
-    newDiv.appendChild(newContent);
-
     var currentDiv = document.getElementById("JavaGame");
     document.body.insertBefore(newDiv, currentDiv);
     document.getElementById('JavaGame').appendChild(newDiv);
-
-
     OnClickLoop(name = rect);
 
   };
@@ -94,13 +86,8 @@ function RandomQuestionGenerator(){
   else if (difficulty == 2){
     randomNumberDifficulty = 100;
   }
-  else if (difficulty == 3){
-    //////////////////////////////
-    //////////////////////////////
-    //////////////////////////////
-  }
   else{
-
+    window.location.href = "http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php";
   }
 
   switch(gameMode){
@@ -220,7 +207,7 @@ function AnswerChecker(sqaureName){
     function QuestionUpdate(){
 
       question++;
-      if (question == 10){gameMode = "default"
+      if (question == 9){gameMode = "default"
 
 
     }

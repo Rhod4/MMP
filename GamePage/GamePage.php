@@ -2,6 +2,13 @@
 
 
 session_start();
+if ($_SESSION['user'] == null){
+
+header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
+
+}
+
+
 ?>
 <?php
 
