@@ -50,7 +50,7 @@ if(isset($_SESSION['login_user'])){
 
 </div>
 
-}
+
 <footer id = "BottomBar">
   <b id="logout"><a href="logout.php">Log Out</a></b>
   <p>BottomBar</p>

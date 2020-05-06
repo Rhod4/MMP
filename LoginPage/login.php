@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     $sql = "SELECT * FROM $school WHERE username ='$username' AND password = '$password'";
 
 
-    $result = mysqli_query($conn, $sql) or die("bad");
+    $result = mysqli_query($conn, $sql) or die(header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
 
     //sets $rows to 1 if user exists
     $rows = mysqli_num_rows($result);
