@@ -1,4 +1,4 @@
-  document.getElementById("EndScreen").style.display = "none";
+document.getElementById("EndScreen").style.display = "none";
 
 
 var difficulty;
@@ -30,7 +30,7 @@ var score = 0;
 
 
 var answer;
-var answerSquareFinder;
+var correctAnswerSquare;
 var question = 0;
 
 DivMaker();
@@ -63,13 +63,13 @@ function DivMaker(){
 
 /*function that sets one of the answer divs to be correct*/
 function SameAnswerChecker(){
-        if (question != 10){
-  for (var rect in rects) {
-    if (rects[rect].set == answerSquareFinder){
-      document.getElementById(rect).innerHTML = answer;
-    }
-  };
-}
+  if (question != 10){
+    for (var rect in rects) {
+      if (rects[rect].set == correctAnswerSquare){
+        document.getElementById(rect).innerHTML = answer;
+      }
+    };
+  }
 }
 
 
@@ -101,7 +101,7 @@ function RandomQuestionGenerator(){
     }
     first = Math.floor(Math.random() * randomNumberDifficulty);
     second = Math.floor(Math.random() * randomNumberDifficulty);
-    answerSquareFinder = Math.floor(Math.random() * 5);
+    correctAnswerSquare = Math.floor(Math.random() * 5);
 
     document.getElementById("StartGame").innerHTML = first + "+" + second;
 
@@ -120,7 +120,7 @@ function RandomQuestionGenerator(){
     }
     first = Math.floor(Math.random() * randomNumberDifficulty);
     second = Math.floor(Math.random() * randomNumberDifficulty);
-    answerSquareFinder = Math.floor(Math.random() * 5);
+    correctAnswerSquare = Math.floor(Math.random() * 5);
 
     document.getElementById("StartGame").innerHTML = first + "-" + second;
     answer = first - second
@@ -136,7 +136,7 @@ function RandomQuestionGenerator(){
       //Allows the game to end
       var element = document.getElementById(rect);
       element.parentNode.removeChild(element);
-EndGame();
+      EndGame();
 
 
     };
@@ -146,18 +146,18 @@ EndGame();
 
   }
 
-        if (question != 10){
-  for (var rect in rects) {
-    do{
-      if (gameMode == "-"){
-        document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty);
-      }else{
-        document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty * 2);
+  if (question != 10){
+    for (var rect in rects) {
+      do{
+        if (gameMode == "-"){
+          document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty);
+        }else{
+          document.getElementById(rect).innerHTML = Math.floor(Math.random() * randomNumberDifficulty * 2);
+        }
       }
-    }
-    while (document.getElementById(rect).innerHTML == answer)
+      while (document.getElementById(rect).innerHTML == answer)
+    };
   };
-};
 
   //runs for every rect in the array of rects
 
@@ -172,68 +172,68 @@ EndGame();
 document.getElementById("StartGame").onmousedown = function() {
   if(gameMode == null){}
   else{
-  RandomQuestionGenerator();
-}}
+    RandomQuestionGenerator();
+  }}
 
 
-/*This function runs as when it was part of the DivMaker function,
-it would only run the last object for all the objects*/
-function OnClickLoop(name){
+  /*This function runs as when it was part of the DivMaker function,
+  it would only run the last object for all the objects*/
+  function OnClickLoop(name){
 
-  document.getElementById(name).addEventListener("mousedown", function (event) {
-    AnswerChecker(sqaureName = name);
+    document.getElementById(name).addEventListener("mousedown", function (event) {
+      AnswerChecker(sqaureName = name);
     });
 
 
-}
-//Updates the text for the score the user has
-function ScoreUpdate(){
-  score++;
-  document.getElementById("Score").innerHTML = score;
-  //
-  //
-}
-//Updates the text for what question the user is on
+  }
+  //Updates the text for the score the user has
+  function ScoreUpdate(){
+    score++;
+    document.getElementById("Score").innerHTML = score;
+    //
+    //
+  }
+  //Updates the text for what question the user is on
 
-//checks the answers that the usr clicks
-function AnswerChecker(sqaureName){
-  if(gameMode == null){}
-  else{
-  if (rects[sqaureName].set == answerSquareFinder){
-    ScoreUpdate();
-    RandomQuestionGenerator();  }
-    else{RandomQuestionGenerator();}}}
+  //checks the answers that the usr clicks
+  function AnswerChecker(sqaureName){
+    if(gameMode == null){}
+    else{
+      if (rects[sqaureName].set == correctAnswerSquare){
+        ScoreUpdate();
+      }
+        RandomQuestionGenerator();}}
 
-    function QuestionUpdate(){
+        function QuestionUpdate(){
 
-      question++;
-      if (question == 9){gameMode = "default"
-
-
-    }
-      document.getElementById("Question").innerHTML = question;
-    }
+          question++;
+          if (question == 9){gameMode = "default"
 
 
-    function TextAnswerInserter(rect){
-      document.getElementById(rect).innerHTML = Math.floor(Math.random() * answer * 2);
-    }
+        }
+        document.getElementById("Question").innerHTML = question;
+      }
 
-    function EndGame(){
-  document.getElementById("JavaGame").style.display = "none";
-  document.getElementById("EndScore").value  = score;
-      document.getElementById("EndScore").readOnly = true;
-  var gameType = document.getElementById('GameMode').value;
+
+      function TextAnswerInserter(rect){
+        document.getElementById(rect).innerHTML = Math.floor(Math.random() * answer * 2);
+      }
+
+      function EndGame(){
+        document.getElementById("JavaGame").style.display = "none";
+        document.getElementById("EndScore").value  = score;
+        document.getElementById("EndScore").readOnly = true;
+        var gameType = document.getElementById('GameMode').value;
         document.getElementById("EndMode").readOnly = true;
 
 
-  if (gameType =="+"){
-document.getElementById("EndMode").value  = "addition";
-}
-else if
-(gameType =="-"){
-document.getElementById("EndMode").value  = "subtraction";
-}
-else {console.log(gameType)}
-document.forms["EndForm"].submit();
-    }
+        if (gameType =="+"){
+          document.getElementById("EndMode").value  = "addition";
+        }
+        else if
+        (gameType =="-"){
+          document.getElementById("EndMode").value  = "subtraction";
+        }
+        else {console.log(gameType)}
+        document.forms["EndForm"].submit();
+      }

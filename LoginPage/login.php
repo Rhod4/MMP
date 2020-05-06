@@ -37,9 +37,15 @@ if (isset($_POST['submit'])) {
       $_SESSION['user'] = $username;
 
 echo $school;
-        if ($school == "admin"){
+        if ($school == "admin" || $user["category"] == 2){
+          if ($school == "admin"){
           $_SESSION["school"] = $AdminSchool;
           $_SESSION["Admin"] = $school;
+        }
+        else{
+            $_SESSION["school"] = $school;
+            $_SESSION["Admin"] = "admin";
+        }
 header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         }
       else if ($user["category"] == 0){
