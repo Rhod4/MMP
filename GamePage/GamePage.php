@@ -95,7 +95,7 @@ echo("basd");
 <h1 id="TitleText"> GamePage</h1>
 </div>
 <br>
-<p id="StartGame">StartGame</p>
+<p id="StartGame">Start Game</p>
 <div id = "JavaGame">
 
 

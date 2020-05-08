@@ -22,8 +22,10 @@ if (isset($_POST['submit'])) {
     $conn = OpenCon();
 
 
-    $sql = "SELECT * FROM $school WHERE username ='$username' AND password = '$password'";
 
+
+
+    $sql = "SELECT * FROM $school WHERE username ='$username'";
 
     $result = mysqli_query($conn, $sql) or die(header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
 
@@ -34,18 +36,20 @@ if (isset($_POST['submit'])) {
 
 
     if ($rows == 1) {
+
+if(password_verify($password,$user['password'])){
+
       $_SESSION['user'] = $username;
 
 echo $school;
         if ($school == "admin" || $user["category"] == 2){
           if ($school == "admin"){
           $_SESSION["school"] = $AdminSchool;
-          $_SESSION["Admin"] = $school;
         }
         else{
             $_SESSION["school"] = $school;
-            $_SESSION["Admin"] = "admin";
         }
+        $_SESSION["Admin"] = "admin";
 header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         }
       else if ($user["category"] == 0){
@@ -56,12 +60,11 @@ header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
             $_SESSION["school"] = $school;
         header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
       }
-    } else {
+    }} else {
       echo 'incorrect';
     }
 
-    CloseCon($conn);
-
-  }
+CloseCon($conn);
 }
+  }
 ?>

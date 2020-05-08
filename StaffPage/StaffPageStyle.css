@@ -18,7 +18,7 @@ body{
   align-items: center;
 justify-content: flex-start;
 }
-#StartBar{
+#StartBar {
   height: 200px;
   width: 35%;
   background-color: #ECECEC;
@@ -37,8 +37,28 @@ justify-content: flex-start;
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
-#StartBar.form-container {
+#StartBar.form-container  {
   max-width: 300px;
   padding: 10px;
   background-color: white;
 }
+#PasswordReset{
+  height: 200px;
+width: 35%;
+background-color: #ECECEC;
+display: flex;
+justify-content: center;
+border-style: groove;
+padding: 10px;}
+
+#PasswordReset.form-popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+#PasswordReset.form-container{
+   max-width: 300px;
+  padding: 10px;
+  background-color: white;}
