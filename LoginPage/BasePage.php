@@ -46,8 +46,11 @@ if(isset($_SESSION['login_user'])){
       <br>
 
     </div>
-  </div>
 
+  </div>
+  <form name="newForm"  action ="" method="post">
+    <input type="submit" id ="guest" name="guest" value = "guest">
+  </form>
 </div>
 
 

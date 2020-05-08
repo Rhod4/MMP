@@ -11,7 +11,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 
 ?>
 <?php
-
+if ($_SESSION['user'] != "guest"){
 include('db_connection.php');
 
 $table = $_SESSION["school"];
@@ -29,6 +29,7 @@ $difficulty = mysqli_fetch_assoc($result);
 
 
   CloseCon($conn);
+}
  ?>
 <!DOCTYPE HTML>
 
@@ -51,6 +52,7 @@ $difficulty = mysqli_fetch_assoc($result);
    <input type="submit" class="btn cancel" value="Submit">
 
    <?php
+   if ($_SESSION['user'] != "guest"){
    $mode = $_POST['EndMode'];
    $score = $_POST['EndScore'];
 
@@ -71,6 +73,7 @@ $difficulty = mysqli_fetch_assoc($result);
 echo("basd");
      }
     CloseCon($conn);
+  }
    ?>
 
 
@@ -99,9 +102,8 @@ echo("basd");
 <div id = "JavaGame">
 
 
-<script  id="GameScript" src="Game.js"  type="text/javascript" difficulty="<?php echo $difficulty["difficulty"] ?>">
+<script  id="GameScript" src="Game.js"  type="text/javascript" difficulty="<?php  if ($_SESSION['user'] != "guest"){ echo $difficulty["difficulty"];} else {echo "1";} ?>">
 
-console.log(score);
 
  </script>
 </div>

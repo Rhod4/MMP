@@ -67,4 +67,11 @@ if (isset($_POST['submit'])) {
       CloseCon($conn);
     }
   }
+else if(isset($_POST['guest'])){
+$_SESSION["school"] = "guest";
+$_SESSION['user'] = "guest";
+  header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
+}
+
+
   ?>
