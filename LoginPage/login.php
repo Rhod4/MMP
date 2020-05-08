@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
   if (empty($_POST['username']) || empty($_POST['password'])  || empty($_POST['school'])){
 
   } else {
-//sets the $ variables to be what the user has entered within the form
+    //sets the $ variables to be what the user has entered within the form
     $username = $_POST['username'];
     $password = $_POST['password'];
     $school = $_POST['school'];
@@ -37,34 +37,34 @@ if (isset($_POST['submit'])) {
 
     if ($rows == 1) {
 
-if(password_verify($password,$user['password'])){
+      if(password_verify($password,$user['password'])){
 
-      $_SESSION['user'] = $username;
+        $_SESSION['user'] = $username;
 
-echo $school;
+        echo $school;
         if ($school == "admin" || $user["category"] == 2){
           if ($school == "admin"){
-          $_SESSION["school"] = $AdminSchool;
-        }
-        else{
+            $_SESSION["school"] = $AdminSchool;
+          }
+          else{
             $_SESSION["school"] = $school;
+          }
+          $_SESSION["Admin"] = "admin";
+          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
         }
-        $_SESSION["Admin"] = "admin";
-header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
+        else if ($user["category"] == 0){
+          $_SESSION["school"] = $school;
+          $_SESSION["Admin"] = "";
+          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
+        } else if ($user["category"] == 1){
+          $_SESSION["school"] = $school;
+          header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
         }
-      else if ($user["category"] == 0){
-    $_SESSION["school"] = $school;
-        $_SESSION["Admin"] = "";
-        header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
-      } else if ($user["category"] == 1){
-            $_SESSION["school"] = $school;
-        header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
+      }} else {
+        echo 'incorrect';
       }
-    }} else {
-      echo 'incorrect';
-    }
 
-CloseCon($conn);
-}
+      CloseCon($conn);
+    }
   }
-?>
+  ?>
