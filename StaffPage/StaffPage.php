@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if ($_SESSION['school'] == null){
+
+header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
+}
 ?>
 <!DOCTYPE HTML>
 
@@ -51,30 +56,35 @@ session_start();
             $result = mysqli_query($conn, $sql) or die("bad");
 
             while ($row = mysqli_fetch_assoc($result)) {
-              if ($row["category"] == "1"){
-                //fill array how to fill array that will look like bellow from database???
-                $list = $row["username"];
-                $difficulty = $row["difficulty"];
-                $num = $row["num"];
+              if ($_SESSION["Admin"] != null){
+                  //fill array how to fill array that will look like bellow from database???
+                  echo '  <tr>
+                  <td>' . $num . '</td>
+                  <td>' . $row["username"] . '</td>
+                  <td>' . $row["year"] . '</td>
+                  <td>' . $row["difficulty"] . '</td>
+                  <td>' . $row["addition"] . '</td>
 
-
-                echo '  <tr>
-                <td>' . $num . '</td>
-                <td>' . $row["username"] . '</td>
-                <td>' . $row["year"] . '</td>
-                <td>' . $row["difficulty"] . '</td>
-                <td>' . $row["addition"] . '</td>
-
-                </tr>
-                ';   }
-
-
-
-
+                  </tr>
+                  ';
+              }
+              else{
+                if ($row["category"] == "1"){
+                  //fill array how to fill array that will look like bellow from database???
+                  echo '  <tr>
+                  <td>' . $num . '</td>
+                  <td>' . $row["username"] . '</td>
+                  <td>' . $row["year"] . '</td>
+                  <td>' . $row["difficulty"] . '</td>
+                  <td>' . $row["addition"] . '</td>
+                  </tr>
+                  ';   }
+              }
+              $list = $row["username"];
+              $difficulty = $row["difficulty"];
+              $num = $row["num"];
 
               }CloseCon($conn);
-
-
               ?>
 
 
@@ -95,7 +105,7 @@ session_start();
 
                 <input type="submit" class="btn cancel" value="Submit" onclick="closeForm()">
                 <input type="submit" value="remove" name="removeUser" id = "removeUser">
-                <input type="button" = value= "click me"  onclick="PasswordChange()">
+                <input type="button" = value= "click me"  onclick="PasswordChange()" id = "PasswordChanger">
 
 
               </div>
@@ -151,11 +161,11 @@ session_start();
 
 
                 var adminPriv = "<?php echo  $_SESSION["Admin"] ?>";
-                console.log(adminPriv);
                 if (adminPriv != "admin"){
                   document.getElementById("student").readOnly = true;
                   document.getElementById("year").readOnly = true;
                   document.getElementById("removeUser").style.display='none';
+                  document.getElementById("PasswordChanger").style.display='none';
                 }
 
 
@@ -169,7 +179,6 @@ session_start();
 
 
               function PasswordChange(){
-                console.log("dsad");
                 document.getElementById("PasswordReset").style.display = "block";
                 document.getElementById("PasswordNumber").value = "error";
                 document.getElementById("PasswordNumber").value = document.getElementById("number").value

@@ -29,19 +29,19 @@ if (isset($_POST['submit'])) {
 
     $result = mysqli_query($conn, $sql) or die(header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
 
-    //sets $rows to 1 if user exists
+    //gets the number of rows that equal the sql query
     $rows = mysqli_num_rows($result);
-    //gets users info
+    //gets users info that are in the rows, e.g. username and password
     $user = mysqli_fetch_assoc($result);
 
 
     if ($rows == 1) {
-
+      //checks if the password is equal to the hashed password
       if(password_verify($password,$user['password'])){
 
         $_SESSION['user'] = $username;
 
-        echo $school;
+
         if ($school == "admin" || $user["category"] == 2){
           if ($school == "admin"){
             $_SESSION["school"] = $AdminSchool;
