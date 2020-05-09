@@ -1,17 +1,4 @@
-{}
-#TitleBar{
-height: 60px;
-background-color: #ECECEC;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 90%;
-}
-#TitleBar h1{
-font-size:50px;
-padding-left: 10px;
-color: gray;
-}
+
 body{
   display: flex;
   flex-direction: column;

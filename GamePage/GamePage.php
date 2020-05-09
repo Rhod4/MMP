@@ -12,7 +12,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 ?>
 <?php
 if ($_SESSION['user'] != "guest"){
-include('db_connection.php');
+    include('../Connection/db_connection.php');
 
 $table = $_SESSION["school"];
 $user =  $_SESSION['user'];
@@ -38,6 +38,7 @@ $difficulty = mysqli_fetch_assoc($result);
   <html lang="en">
 <meta charset="UTF-8">
  <link rel = "stylesheet" href="GamePageStyle.css">
+  <link rel = "stylesheet" href="../MainCSS/MainCSS.css">
 
 <title>Rhs24 MMP</title>
 </head>
@@ -114,12 +115,9 @@ echo("basd");
   </div>
   <Div id= "Break"></div>
   <div id= "Question"></div>
-</div>
-<footer id = "BottomBar">
-<p>BottomBar</p>
-</footer>
+
+  <footer id = "footer">
+    <b id="logout"><a href="../Connection/logout.php">Log Out</a></b>
+  </footer>
 
 </body>
-<script>
-
-</script>

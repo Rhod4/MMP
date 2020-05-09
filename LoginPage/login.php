@@ -5,14 +5,14 @@ session_start();
 ?>
 <?php
 $error = '';
-include('db_connection.php');
+    include('../Connection/db_connection.php');
 
 
 
 if (isset($_POST['submit'])) {
 
   if (empty($_POST['username']) || empty($_POST['password'])  || empty($_POST['school'])){
-
+    $_SESSION["incorrect"] = 1;
   } else {
     //sets the $ variables to be what the user has entered within the form
     $username = $_POST['username'];
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 
     $sql = "SELECT * FROM $school WHERE username ='$username'";
 
-    $result = mysqli_query($conn, $sql) or die(header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
+    $result = mysqli_query($conn, $sql) or die($_SESSION["incorrect"] = 1 + header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
 
     //gets the number of rows that equal the sql query
     $rows = mysqli_num_rows($result);
@@ -61,7 +61,8 @@ if (isset($_POST['submit'])) {
           header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
         }
       }} else {
-        echo 'incorrect';
+    $_SESSION["incorrect"] = 1;
+
       }
 
       CloseCon($conn);

@@ -12,7 +12,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="StaffPageStyle.css">
-
+<link rel = "stylesheet" href="../MainCSS/MainCSS.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 
   <title>Rhs24 MMP</title>
@@ -44,7 +44,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
           <tbody>
 
             <?php
-            include('db_connection.php');
+            include('../Connection/db_connection.php');
 
             $conn = OpenCon();
 
@@ -188,6 +188,9 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
             </div>
 
           </div>
+          <footer id = "footer">
+            <b id="logout"><a href="../Connection/logout.php">Log Out</a></b>
+          </footer>
         </body>
         <?php
 
