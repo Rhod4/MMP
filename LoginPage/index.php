@@ -1,8 +1,6 @@
 <?php
 include ('login.php');
-if(isset($_SESSION['login_user'])){
-  header("location: game");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,13 +10,13 @@ if(isset($_SESSION['login_user'])){
   <meta charset="UTF-8">
   <link rel = "stylesheet" href="BaseStyle.css">
   <link rel = "stylesheet" href="../MainCSS/MainCSS.css">
-  <title>Rhs24 MMP</title>
+  <title>Primary Challenge</title>
 </head>
 
 
 <body>
   <div id = "TitleBar">
-    <h1 id="TitleText"> Login</h1>
+    <h1 id="TitleText">Primary Challenge</h1>
   </div>
 
   <div id = "LoginDiv">
@@ -30,11 +28,9 @@ if(isset($_SESSION['login_user'])){
         <label for="school">school:   </label>
         <input id = "school" type="text" name="school">
         <br><br>
-
         <label for="username">username:   </label>
         <input id = "username" type="text" name="username">
         <br><br>
-
         <label for="password">password:   </label>
         <input type="password" id ="password" name="password">
         <br><br>
@@ -73,14 +69,14 @@ if(isset($_SESSION['login_user'])){
   <div id = "GuestDivider">
   <form name="newForm"  action ="" method="post">
     <label for="guest">Try the Game</label>
-    <input type="submit" id ="guest" name="guest" value = "guest">
+    <input type="submit" id ="guest" name="guest" value = "Guest">
   </form>
 </div>
 </div>
 
 
 <footer id = "footer">
-  <b id="logout"><a href="../Connection/logout.php">Log Out</a></b>
+  <b id="logout"><a style="text-decoration:none" href="../../Connection/logout.php">Log Out</a></b>
 </footer>
 </body>
 </html>

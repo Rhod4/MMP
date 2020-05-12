@@ -1,5 +1,3 @@
-
-
 #LoginDiv{
   margin-top:5%;
   width: 100%;
@@ -8,38 +6,36 @@
   justify-content: center;
   flex-direction: column;
 }
-
 #InputDetails{
   padding: 60px;
-  border: 5px solid #00A86B;
+  border: 2px solid #00A86B;
   display: flex;
   align-self: center;
 }
-
 #InputDetails input[type=text], input[type=password]{
-  border: 2px solid #00A86B;
+  border: 1px solid #00A86B;
   border-radius: 4px;
   float: right;
 }
-
 #InputDetails input[type=submit] {
-  border: 2px solid #00A86B;
+  border: 1px solid #00A86B;
   padding: 8px 16px;
-  float: right;
+float: right;
 }
 #GuestDivider{
   padding: 60px;
-  border: 5px solid #00A86B;
+  border: 2px solid #00A86B;
   display: flex;
   align-self: center;
   margin: 20px;
 }
-
-
+#GuestDivider input[type=submit] {
+  border: 1px solid #00A86B;
+  padding: 8px 16px;
+}
 body{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }

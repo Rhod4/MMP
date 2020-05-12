@@ -5,7 +5,7 @@ session_start();
 ?>
 <?php
 $error = '';
-    include('../Connection/db_connection.php');
+    include('../../Connection/db_connection.php');
 
 
 
@@ -22,12 +22,14 @@ if (isset($_POST['submit'])) {
     $conn = OpenCon();
 
 
-
-
+  $username = trim($username, " \$\*\=");
+$password = trim($password, " \$\*\=");
+$school = trim($school, " \$\*\=");
+$AdminSchool = trim($AdminSchool, " \$\*\=");
 
     $sql = "SELECT * FROM $school WHERE username ='$username'";
 
-    $result = mysqli_query($conn, $sql) or die($_SESSION["incorrect"] = 1 + header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php'));
+    $result = mysqli_query($conn, $sql) or die($_SESSION["incorrect"] = 1 + header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/index.php'));
 
     //gets the number of rows that equal the sql query
     $rows = mysqli_num_rows($result);
@@ -41,7 +43,6 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['user'] = $username;
 
-
         if ($school == "admin" || $user["category"] == 2){
           if ($school == "admin"){
             $_SESSION["school"] = $AdminSchool;
@@ -50,19 +51,26 @@ if (isset($_POST['submit'])) {
             $_SESSION["school"] = $school;
           }
           $_SESSION["Admin"] = "admin";
-          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
+              $_SESSION["accountType"] = $user["category"];
+          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/index.php');
         }
         else if ($user["category"] == 0){
           $_SESSION["school"] = $school;
           $_SESSION["Admin"] = "";
-          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/StaffPage.php');
+          $_SESSION["accountType"] = $user["category"];
+          header('location: http://users.aber.ac.uk/rhs24/MMP/StaffPage/index.php');
+
         } else if ($user["category"] == 1){
           $_SESSION["school"] = $school;
-          header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
+          $_SESSION["accountType"] = $user["category"];
+          header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/index.php');
         }
+      } else {
+        $_SESSION["incorrect"] = 1;
+        header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/index.php');
       }} else {
     $_SESSION["incorrect"] = 1;
-
+    header('location: http://users.aber.ac.uk/rhs24/MMP/LoginPage/index.php');
       }
 
       CloseCon($conn);
@@ -71,7 +79,8 @@ if (isset($_POST['submit'])) {
 else if(isset($_POST['guest'])){
 $_SESSION["school"] = "guest";
 $_SESSION['user'] = "guest";
-  header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/GamePage.php');
+$_SESSION["accountType"] = 1;
+  header('location: http://users.aber.ac.uk/rhs24/MMP/GamePage/index.php');
 }
 
 

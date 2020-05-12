@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if ($_SESSION['school'] == null){
+if ($_SESSION['school'] == null || $_SESSION["accountType"] == 1){
 
-header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
+header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/index.php');
 }
 ?>
 <!DOCTYPE HTML>
@@ -15,12 +15,12 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 <link rel = "stylesheet" href="../MainCSS/MainCSS.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
 
-  <title>Rhs24 MMP</title>
+  <title>Primary Challenge</title>
 </head>
 <body>
 
   <div id="TitleBar">
-    <h1 id="TitleText"> Staff Page</h1>
+    <h1 id="TitleText">Primary Challenge</h1>
   </div>
 
   <div id="Table">
@@ -37,14 +37,14 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
           <th>year</th>
           <th>difficulty</th>
           <th>addition</td>
-
+          <th>subtraction</th>
           </thead>
 
 
           <tbody>
 
             <?php
-            include('../Connection/db_connection.php');
+            include('../../Connection/db_connection.php');
 
             $conn = OpenCon();
 
@@ -59,12 +59,12 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
               if ($_SESSION["Admin"] != null){
                   //fill array how to fill array that will look like bellow from database???
                   echo '  <tr>
-                  <td>' . $num . '</td>
+                  <td>' . $row["num"] . '</td>
                   <td>' . $row["username"] . '</td>
                   <td>' . $row["year"] . '</td>
                   <td>' . $row["difficulty"] . '</td>
                   <td>' . $row["addition"] . '</td>
-
+                  <td>' . $row["subtraction"] . '</td>
                   </tr>
                   ';
               }
@@ -72,17 +72,16 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
                 if ($row["category"] == "1"){
                   //fill array how to fill array that will look like bellow from database???
                   echo '  <tr>
-                  <td>' . $num . '</td>
+                  <td>' . $row["num"] . '</td>
                   <td>' . $row["username"] . '</td>
                   <td>' . $row["year"] . '</td>
                   <td>' . $row["difficulty"] . '</td>
                   <td>' . $row["addition"] . '</td>
+                  <td>' . $row["subtraction"] . '</td>
                   </tr>
                   ';   }
               }
-              $list = $row["username"];
               $difficulty = $row["difficulty"];
-              $num = $row["num"];
 
               }CloseCon($conn);
               ?>
@@ -105,17 +104,21 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 
                 <input type="submit" class="btn cancel" value="Submit" onclick="closeForm()">
                 <input type="submit" value="remove" name="removeUser" id = "removeUser">
+                <br>
                 <input type="button" = value= "reset password"  onclick="PasswordChange()" id = "PasswordChanger">
-
+                <input type="button" value="Close" name="Close" id = "CloseForm" onclick="closeForm()">
+              </form>
 
               </div>
 
               <div class="form-popup" id="PasswordReset">
                 <form class="form-container" method="post">
+                  <h1> Reset password</h1>
                 <input type="hidden" id ="PasswordNumber" name="PasswordNumber">
                 <input type="password" id ="password" name="password">
                 <input type="password" id ="password2" name="password2">
                 <input type="submit" value="Confirm" name="PasswordSubmit" id = "PasswordSubmit">
+                <input type="button" value="Close" name="Close" id = "CloseForm2" onclick="closeForm()">
                 </form>
               </div>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
@@ -135,16 +138,6 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
                 $('#StudentDataBase').DataTable();
 
                 myTable.column( 0 ).visible( false );
-              });
-
-
-
-
-              $('#StudentDataBase').on('click', 'a.remove', function () {
-
-
-
-
               });
 
               $('#StudentDataBase').on('click', 'td', function () {
@@ -173,8 +166,8 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 
 
               function closeForm() {
-
                 document.getElementById("StartBar").style.display = "none";
+                document.getElementById("PasswordReset").style.display = "none";
               }
 
 
@@ -189,7 +182,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 
           </div>
           <footer id = "footer">
-            <b id="logout"><a href="../Connection/logout.php">Log Out</a></b>
+            <b id="logout"><a style="text-decoration:none" href="../../Connection/logout.php">Log Out</a></b>
           </footer>
         </body>
         <?php
@@ -200,7 +193,6 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
           $number = $_POST['number'];
 
           $conn = OpenCon();
-  $sql = "SELECT * FROM $table WHERE username ='$user'";
           $table = $_SESSION["school"];
           $user = $_SESSION['user'];
           if(!isset($_POST['PasswordSubmit'])) {
@@ -209,9 +201,10 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
             $result = mysqli_query($conn, $sql) or die("bad");
             $studentData = mysqli_fetch_assoc($result);
 
-
+          if ($difficulty != null){
             $sql = "UPDATE $table SET difficulty = '$difficulty', username = '$student', year = '$year' WHERE num = '$number'";
-
+}
+else {$sql = "UPDATE $table SET username = '$student', year = '$year' WHERE num = '$number'";}
             if ($conn->query($sql) === TRUE) {
 
             } else {
