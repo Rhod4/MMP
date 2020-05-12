@@ -170,10 +170,12 @@ function RandomQuestionGenerator(){
 }
 //when the click me button is clicked. It starts the game
 document.getElementById("StartGame").onmousedown = function() {
-  if(gameMode == null){}
+  if(gameMode == null){
+    gameMode = "+";
+  }
   else{
-    RandomQuestionGenerator();
-  }}
+
+  }  RandomQuestionGenerator();}
 
 
   /*This function runs as when it was part of the DivMaker function,
@@ -207,7 +209,7 @@ document.getElementById("StartGame").onmousedown = function() {
         function QuestionUpdate(){
 
           question++;
-          if (question == 9){gameMode = "default"
+          if (question == 10){gameMode = "default"
 
 
         }

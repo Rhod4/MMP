@@ -105,7 +105,7 @@ header('location:  http://users.aber.ac.uk/rhs24/MMP/LoginPage/BasePage.php');
 
                 <input type="submit" class="btn cancel" value="Submit" onclick="closeForm()">
                 <input type="submit" value="remove" name="removeUser" id = "removeUser">
-                <input type="button" = value= "click me"  onclick="PasswordChange()" id = "PasswordChanger">
+                <input type="button" = value= "reset password"  onclick="PasswordChange()" id = "PasswordChanger">
 
 
               </div>
