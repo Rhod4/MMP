@@ -110,11 +110,9 @@ echo("basd");
 </div>
 
 <div id = "Progress">
-  <div id= "Score">
-
-  </div>
+  <div id= "Score"><p>Score</p></div>
   <Div id= "Break"></div>
-  <div id= "Question"></div>
+  <div id= "Question"><p>Question</p></div>
 
   <footer id = "footer">
     <b id="logout"><a href="../Connection/logout.php">Log Out</a></b>

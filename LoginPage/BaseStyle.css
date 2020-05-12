@@ -11,25 +11,25 @@
 
 #InputDetails{
   padding: 60px;
-  border: 5px solid #FEE12B;
+  border: 5px solid #00A86B;
   display: flex;
   align-self: center;
 }
 
 #InputDetails input[type=text], input[type=password]{
-  border: 2px solid #FEE12B;
+  border: 2px solid #00A86B;
   border-radius: 4px;
   float: right;
 }
 
 #InputDetails input[type=submit] {
-  border: 2px solid #FEE12B;
+  border: 2px solid #00A86B;
   padding: 8px 16px;
   float: right;
 }
 #GuestDivider{
   padding: 60px;
-  border: 5px solid #FEE12B;
+  border: 5px solid #00A86B;
   display: flex;
   align-self: center;
   margin: 20px;
