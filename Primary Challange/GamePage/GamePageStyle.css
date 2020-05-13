@@ -1,0 +1,90 @@
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+    font-size:20px;
+}
+
+#JavaGame{
+  width: 80%;
+  height: 200px;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#Game{
+  flex-direction:row;
+}
+
+#Progress{
+  width: 80%;
+  height: 50px;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#Question {
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  font-size:40px;
+  text-align: center;
+  border-style: groove;
+}
+#Break {
+  width:  150px;
+  height: 50px;
+  background-color: #ECECEC;
+}
+
+#Score {
+  width:  150px;
+  height: 50px;
+  background-color: white;
+  font-size:40px;
+  text-align: center;
+  border-style: groove;
+}
+
+#BottomBar{
+  height: 100px;
+  width: 100%;
+  background-color: #ECECEC;
+  position: fixed;
+  bottom: 0;
+  font-size: 15px;
+}
+#StartBar.button{
+  border: 2px solid #00A86B;
+  padding: 8px 16px;
+float: right;
+}
+#StartBar, #EndScreen {
+  height: 200px;
+  width: 35%;
+  background-color: #ECECEC;
+  display: flex;
+  justify-content: center;
+  border-style: groove;
+  padding: 10px;
+}
+
+#StartBar.form-popup, #EndScreen.form-popup{
+
+background-color: gray;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+#StartBar.form-container, #EndScreen.form-container{
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
