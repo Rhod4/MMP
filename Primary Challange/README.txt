@@ -1,5 +1,5 @@
 Primary Challenge Read me file.
-This read me contains information about how to view the site and the structure of the website.
+This read me contains information about how to view the site and the structure of the website. The login details are also shown on this document
 
 To view the website go to;
 https://users.aber.ac.uk/rhs24/MMP/LoginPage/index.php
@@ -25,3 +25,26 @@ Where the CSS document that contains information for multiple pages are kept, e.
 StaffPage folder:
 Contains the staff/admin page for the website, e.g. file with the table in it.
 This folder also contains the CSS file for the staff/admin page
+
+Logins for the website:
+
+Staff;
+School: test
+Username: Dave
+Password: teacher
+
+Student:
+School: test 
+Username: Chris
+Password: pass
+
+Local Admin:
+School: test 
+Username: admin
+Password: admnin
+
+Global admin:
+School: admin
+Username: James
+Password: admnin
+Other: test
